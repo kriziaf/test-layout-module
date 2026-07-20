@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     Text and Image — Component Artifact (developer deliverable)
+     v1.17
+
+     EVERYTHING INSIDE <body> IS SHIPPABLE MARKUP.
+     Annotations: components/text-and-image/text-and-image.md
+     Three self-contained variants; copy the one you need.
+
+     REQUIRED INCLUDES
+       css/tokens.css                (semantic brand tokens)
+       css/base.css                  (.component-viewport wrapper)
+       components/text-and-image/text-and-image.css      (this component)
+       Google Fonts: Montserrat, Inter, Nunito
+       (CHC mode: Value Serif/Sans Pro licensed webfonts — falls
+        back to Georgia / Helvetica until provided)
+
+     REQUIRED CONTEXT
+       - An ancestor element with data-theme set to one of:
+         evernorth | tcg | chc | white-label
+       - Each text-and-image wrapped in .component-viewport (container
+         queries: stacks <1024px, two-across >=1024px)
+
+     VARIANT API (modifier class on <section>)
+       text-and-image--fixed-image | text-and-image--cutout | text-and-image--two-column
+
+     CONTENT SLOTS
+       .text-and-image__eyebrow  — short uppercase kicker
+       .text-and-image__headline — 1–2 lines
+       .text-and-image__body     — 1 short paragraph
+       .text-and-image__actions — Primary CTA + Secondary CTA
+                                  (.btn atom; requires
+                                  button-group.css)
+       .text-and-image__media img — fixed-image / two-column: rectangular
+         photo (auto-cropped 1:1 / 626:400); cutout: transparent
+         PNG carrying its own shape
+     ============================================================ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="version" content="1.17">
+  <title>Text and Image — Component Artifact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../button-group/button-group.css">
+  <link rel="stylesheet" href="text-and-image.css">
+</head>
+<body data-theme="evernorth">
+
+<!-- ============================================
+     VARIANT 1 OF 3: text-and-image--fixed-image
+     ============================================ -->
+<div class="component-viewport">
+  <section class="text-and-image text-and-image--fixed-image">
+    <div class="text-and-image__media">
+      <img src="../../img/text-and-image-boardwalk.jpg" alt="An older couple walking arm in arm on a boardwalk by the beach">
+    </div>
+    <div class="text-and-image__content">
+      <p class="text-and-image__eyebrow">EYEBROW TEXT</p>
+      <h2 class="text-and-image__headline">We’re defining what makes people happy</h2>
+      <p class="text-and-image__body">With the launch of Evernorth Accountable Care, Evernorth Health Services is championing a value-based ecosystem that connects patients to high-performing primary care providers (PCPs) and specialists at affordable costs and improved quality outcomes.</p>
+      <div class="text-and-image__actions">
+          <a class="btn btn--primary" href="#">Primary CTA</a>
+          <a class="btn btn--secondary" href="#">Secondary CTA</a>
+        </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================
+     VARIANT 2 OF 3: text-and-image--cutout
+     ============================================ -->
+<div class="component-viewport">
+  <section class="text-and-image text-and-image--cutout">
+    <div class="text-and-image__media">
+      <img src="../../img/text-and-image-cutout.png" alt="A smiling woman in a pink shirt, framed in a plus-shaped cutout">
+    </div>
+    <div class="text-and-image__content">
+      <p class="text-and-image__eyebrow">EYEBROW TEXT</p>
+      <h2 class="text-and-image__headline">We’re defining what makes people happy</h2>
+      <p class="text-and-image__body">With the launch of Evernorth Accountable Care, Evernorth Health Services is championing a value-based ecosystem that connects patients to high-performing primary care providers (PCPs) and specialists at affordable costs and improved quality outcomes.</p>
+      <div class="text-and-image__actions">
+          <a class="btn btn--primary" href="#">Primary CTA</a>
+          <a class="btn btn--secondary" href="#">Secondary CTA</a>
+        </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================
+     VARIANT 3 OF 3: text-and-image--two-column
+     ============================================ -->
+<div class="component-viewport">
+  <section class="text-and-image text-and-image--two-column">
+    <div class="text-and-image__media">
+      <img src="../../img/text-and-image-boardwalk.jpg" alt="An older couple walking arm in arm on a boardwalk by the beach">
+    </div>
+    <div class="text-and-image__content">
+      <p class="text-and-image__eyebrow">EYEBROW TEXT</p>
+      <h2 class="text-and-image__headline">We’re defining what makes people happy</h2>
+      <p class="text-and-image__body">With the launch of Evernorth Accountable Care, Evernorth Health Services is championing a value-based ecosystem that connects patients to high-performing primary care providers (PCPs) and specialists at affordable costs and improved quality outcomes.</p>
+      <div class="text-and-image__actions">
+          <a class="btn btn--primary" href="#">Primary CTA</a>
+          <a class="btn btn--secondary" href="#">Secondary CTA</a>
+        </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
