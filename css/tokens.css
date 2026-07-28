@@ -1,6 +1,6 @@
 /* ============================================================
-   tokens.css — generated from variables.json (Figma export v1.17.4)
-   v1.17 | Semantic tokens resolved for four brand modes:
+   tokens.css — generated from variables.json (Figma export v1.31.4)
+   v1.31 | Semantic tokens resolved for four brand modes:
      [data-theme="evernorth"]    — Semantic: All Brands / Evernorth
      [data-theme="tcg"]          — Semantic: All Brands / The Cigna Group
      [data-theme="chc"]          — Semantic: All Brands / Cigna Healthcare
@@ -73,7 +73,7 @@
   --typography-meta-default-line-height: 1.5rem;
   --typography-meta-default-font-weight: 700;           /* Bold */
 
-  /* feature-list additions */
+  /* list-item additions */
   --color-content-link: #035C67;
   --color-content-link-hover: #00363D;
   --typography-display-small-font-size: 3rem;   /* 48 */
@@ -104,6 +104,8 @@
   --color-button-accent-outline-disabled: #ABABAB;
   --color-button-accent-outline-bg-hover: #003826;
   --color-button-accent-outline-bg-active: #00171A;
+  --color-bg-brand-xstrong: #00363D;
+  --color-content-inverse-default: #FFFFFF;
 }
 
 /* ---- Mode: The Cigna Group (TCG) ---- */
@@ -167,7 +169,7 @@
   --typography-meta-default-line-height: 1.5rem;
   --typography-meta-default-font-weight: 500;           /* Medium */
 
-  /* feature-list additions */
+  /* list-item additions */
   --color-content-link: #0033FF;
   --color-content-link-hover: #110081;
   --typography-display-small-font-size: 3rem;
@@ -209,6 +211,8 @@
   --color-button-accent-outline-disabled: #ABABAB;
   --color-button-accent-outline-bg-hover: rgba(255,255,255,0.12);
   --color-button-accent-outline-bg-active: rgba(255,255,255,0.2);
+  --color-bg-brand-xstrong: #110081;
+  --color-content-inverse-default: #FFFFFF;
 }
 
 /* ---- Mode: Cigna Healthcare (CHC) ---- */
@@ -273,7 +277,7 @@
   --typography-meta-default-line-height: 1.5rem;
   --typography-meta-default-font-weight: 500;
 
-  /* feature-list additions */
+  /* list-item additions */
   --color-content-link: #0033FF;
   --color-content-link-hover: #110081;
   --typography-display-small-font-size: 3rem;
@@ -296,6 +300,8 @@
   --color-button-accent-bg: #FFFFFF;
   --color-button-accent-content: #0033FF;
   --color-button-accent-outline: #FFFFFF;
+  --color-bg-brand-xstrong: #110081;
+  --color-content-inverse-default: #FFFFFF;
 }
 
 /* ---- Mode: White Label ---- */
@@ -359,7 +365,7 @@
   --typography-meta-default-line-height: 1rem;
   --typography-meta-default-font-weight: 400;
 
-  /* feature-list additions */
+  /* list-item additions */
   --color-content-link: #0033FF;
   --color-content-link-hover: #110081;
   --typography-display-small-font-size: 3rem;
@@ -382,6 +388,8 @@
   --color-button-accent-bg: #FFFFFF;
   --color-button-accent-content: #202427;
   --color-button-accent-outline: #FFFFFF;
+  --color-bg-brand-xstrong: #202427;
+  --color-content-inverse-default: #FFFFFF;
 }
 
 /* ---- Component bridge: text-and-image consumes semantic tokens ---- */
@@ -408,15 +416,16 @@
 
 }
 
-.feature-list {
-  --fl-ink: var(--color-content-default);
-  --fl-subtle: var(--color-content-subtle);
-  --fl-accent: var(--color-content-brand);
-  --fl-link: var(--color-content-link);
-  --fl-link-hover: var(--color-content-link-hover);
-  --fl-font: var(--typography-body-font-family);
-  --fl-headline-font: var(--typography-headline-font-family);
-  --fl-item-title: var(--color-content-list-title);
+.list-item {
+  --li-ink: var(--color-content-default);
+  --li-subtle: var(--color-content-subtle);
+  --li-accent: var(--color-content-brand);
+  --li-link: var(--color-content-link);
+  --li-link-hover: var(--color-content-link-hover);
+  --li-font: var(--typography-body-font-family);
+  --li-headline-font: var(--typography-headline-font-family);
+  --li-item-title: var(--color-content-list-title);
+  --li-accent-badge: var(--color-content-brand);
 }
 
 .icon-cards {
@@ -491,4 +500,14 @@
 .btn {
   --btn-font: var(--typography-body-font-family);
   --btn-radius: var(--border-radius-default);
+}
+
+.highlight-bar {
+  --hlb-bg: var(--color-bg-brand-xstrong);
+  --hlb-ink: var(--color-content-inverse-default);
+  --hlb-ink-subtle: rgba(255, 255, 255, 0.72);
+  --hlb-icon-bg: rgba(255, 255, 255, 0.15);
+  --hlb-divider: rgba(255, 255, 255, 0.15);
+  --hlb-font: var(--typography-body-font-family);
+  --hlb-headline-font: var(--typography-headline-font-family);
 }

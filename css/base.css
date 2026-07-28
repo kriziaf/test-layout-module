@@ -1,6 +1,6 @@
 /* ============================================================
    base.css — shared library layer
-   v1.17 | Container-query viewport wrapper + shared resets.
+   v1.31 | Container-query viewport wrapper + shared resets.
    Every component renders inside a .component-viewport so
    breakpoints respond to container width (real viewports and
    the demo's width simulator alike).

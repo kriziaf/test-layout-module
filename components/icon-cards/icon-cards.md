@@ -4,7 +4,6 @@
 Outlined tap-target cards, each a centered icon over a short heading. Two counts: 3-Up (one row) and 6-Up (three by two).
 
 ## Content
-- Section header: a left-justified heading block (eyebrow, title, one-paragraph body) sits above the card grid, no CTA — the same pattern as Horizontal Cards. It frames the whole set; card headings stay the short wayfinding labels described below.
 - Card heading: two to four words, sentence case.
 - Icon: one Phosphor icon per card, swapped per destination.
 - Every card is a link; there is no body copy by design.

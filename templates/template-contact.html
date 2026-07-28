@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     Header — Component Artifact (developer deliverable)
-     v1.31 | Global navigation bar. (Note: unrelated to the
-     former "Hero" component, since renamed Text and Image.)
+     Contact Us (CONTENT INSTANCE)
+     v1.31 | Support/contact page modeled on a reference design
+     (Zocdoc-style content genre; original copy, not reproduced
+     verbatim from the source). Carries real copy; not
+     regenerable from artifacts by pure copy.
 
-     EVERYTHING INSIDE <body> IS SHIPPABLE MARKUP.
-     Annotations: components/header/header.md
-     Single variant; copy the <header> element.
+     JUDGMENT CALLS
+       - Hero ships with NO CTA (.hero__actions omitted) to
+         match the reference exactly.
+       - "Our locations" reuses List Item's shared 4-col grid,
+         but items 2-4 omit the icon/link slots (heading=city,
+         body=address only) and item 1 is icon+heading only, no
+         body — a lighter-weight use of the component than its
+         other instances. Wrapped in an instance-only white card
+         (inline style) to match the reference’s boxed section;
+         not a component-level change.
+       - "Give us a call" / "Visit our Help Center" cards need
+         two links each; External Link Cards’ heading variant
+         has one link slot, so the second set of links lives as
+         inline links inside the body copy instead.
+     Marketing landing: image hero, link features, quick-link + image cards, 3-up icon tiles, two-column form.
 
-     REQUIRED INCLUDES
-       css/tokens.css                     (semantic brand tokens)
-       css/base.css                       (.component-viewport wrapper)
-       components/header/header.css       (this component)
-       Google Fonts: Montserrat, Inter, Nunito
+     SECTION ARCHITECTURE
+       0. header--default
+       1. hero--default (no CTA)          "We’re here to help"
+       2. external-link-cards--heading    Chat / Call / Help Center
+       3. list-item--links (adapted)      Our locations
+       4. heading-block--center (CTA)     Practice signup banner
+       5. form--stacked (customized)      Contact form
 
-     REQUIRED CONTEXT
-       - An ancestor element with data-theme set to one of:
-         evernorth | tcg | chc | white-label. The matching brand
-         logo shows automatically (all four ship in the markup;
-         CSS reveals the active one).
-       - Wrapped in .component-viewport. Full nav >=1024px;
-         hamburger + drawer below (CSS-only checkbox toggle —
-         no JavaScript required).
-
-     VARIANT API (modifier class on <header>)
-       header--default
-
-     CONTENT SLOTS
-       .header__logo        — brand link; logos extracted from
-                              the design SVGs (TCG / Evernorth /
-                              CHC). White Label ships a text
-                              placeholder — swap when a logo is
-                              provided.
-       .header__nav-link    — nav items; set aria-current="page"
-                              on the active item to fill the 4px
-                              underline (hover does the same)
-       .header__util        — Account / Login (Phosphor
-                              user-circle icons)
-
-     NOTES
-       - Bar shadow maps to the shadow/default color token.
-       - Duplicated nav/utils in .header__drawer serve the
-         mobile menu; keep both lists in sync when editing.
+     BRAND MODE: set data-theme on <body>:
+       evernorth | tcg | chc | white-label
      ============================================================ -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="version" content="1.31">
-  <title>Header — Component Artifact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/tokens.css">
-  <link rel="stylesheet" href="../../css/base.css">
-  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/templates.css">
+  <link rel="stylesheet" href="../components/header/header.css">
+  <link rel="stylesheet" href="../components/hero/hero.css">
+  <link rel="stylesheet" href="../components/text-and-image/text-and-image.css">
+  <link rel="stylesheet" href="../components/button-group/button-group.css">
+  <link rel="stylesheet" href="../components/heading-block/heading-block.css">
+  <link rel="stylesheet" href="../components/horizontal-cards/horizontal-cards.css">
+  <link rel="stylesheet" href="../components/list-item/list-item.css">
+  <link rel="stylesheet" href="../components/external-link-cards/external-link-cards.css">
+  <link rel="stylesheet" href="../components/icon-cards/icon-cards.css">
+  <link rel="stylesheet" href="../components/form/form.css">
+  <title>Contact Us</title>
 </head>
 <body data-theme="evernorth">
 
-<!-- ============================================
-     VARIANT 1 OF 1: header--default
-     ============================================ -->
 <div class="component-viewport">
   <header class="header header--default">
     <input class="header__menu-checkbox" type="checkbox" id="header-menu" aria-label="Toggle menu">
@@ -105,6 +102,123 @@
       </div>
     </div>
   </header>
+</div>
+
+<div class="component-viewport">
+  <section class="hero hero--default">
+    <div class="hero__layout">
+      <div class="hero__panel">
+        <h1 class="hero__headline">We’re here to help</h1>
+        <p class="hero__body">Our service team is available Monday through Friday, 8am–8pm ET, and on weekends and holidays from 9am–6pm ET.</p>
+        </div>
+      <div class="hero__media">
+        <img src="../img/hero-default-photo.jpg" alt="A virtual care provider on a video visit">
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <section class="external-link-cards external-link-cards--heading">
+    <div class="external-link-cards__grid">
+      <div class="external-link-cards__card">
+        <span class="external-link-cards__chip"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+        <h3 class="external-link-cards__title">Start a chat</h3>
+        <p class="external-link-cards__body">Quick, one-on-one help.</p>
+        <a class="external-link-cards__link" href="#">Start chat</a>
+      </div>
+      <div class="external-link-cards__card">
+        <span class="external-link-cards__chip"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+        <h3 class="external-link-cards__title">Give us a call</h3>
+        <p class="external-link-cards__body">Talk to a support specialist right away.<br>Patient: <a href="tel:8559623621">855-962-3621</a><br>Provider: <a href="tel:8669623621">866-962-3621</a></p>
+      </div>
+      <div class="external-link-cards__card">
+        <span class="external-link-cards__chip"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+        <h3 class="external-link-cards__title">Visit our Help Center</h3>
+        <p class="external-link-cards__body">Find answers and step-by-step guides.<br><a href="#">Patient</a> &middot; <a href="#">Provider</a></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <div style="background:#fff; border:1px solid var(--color-border-default); border-radius: var(--border-radius-container); padding: 2rem;">
+    <section class="list-item list-item--links">
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M232,224H208V32a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V224H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16ZM96,64h16V80H96Zm0,40h16v16H96Zm0,40h16v16H96Zm64-80h16V80H160Zm0,40h16v16H160Zm0,40h16v16H160ZM64,224V184H80v40Zm112,0V184H192v40Z"/></svg>
+        <h3 class="list-item__heading">Our locations</h3>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">New York</h3>
+        <p class="list-item__body">568 Broadway<br>Floor 9<br>New York, NY 10012</p>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">Silicon Valley</h3>
+        <p class="list-item__body">2150 North 1st Street<br>Suite 200<br>San Jose, CA 95131</p>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">Boston</h3>
+        <p class="list-item__body">275 Grove Street<br>Suite 2-400<br>Newton, MA 02466</p>
+      </div>
+    </div>
+  </section>
+  </div>
+</div>
+
+<div class="component-viewport">
+  <section class="heading-block heading-block--center">
+    <h2 class="heading-block__title">Are you a practice interested in joining us?</h2>
+    <p class="heading-block__body">Reach more patients and simplify scheduling with a platform built for modern practices.</p>
+    <div class="heading-block__actions">
+      <a class="btn btn--primary" href="#">Get Started</a>
+    </div>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <section class="form form--stacked">
+    <header class="form__header">
+      <p class="form__eyebrow">CONTACT US</p>
+      <h2 class="form__headline">Send us a message</h2>
+      <p class="form__note">For non-urgent questions—we respond within one business day.</p>
+    </header>
+    <div class="form__layout">
+      <form class="form__fields" action="#" method="post">
+        <div class="form__field">
+          <label class="form__label" for="st-field-1">Name</label>
+          <input class="form__input" type="text" id="st-field-1" name="field-1">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="st-field-3">Email</label>
+          <input class="form__input" type="text" id="st-field-3" name="field-3">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="level-2">What can we help with?</label>
+          <select class="form__select" id="level-2" name="level">
+            <option value="">Select One</option>
+            <option>Billing question</option>
+            <option>Technical support</option>
+            <option>Partnership inquiry</option>
+            <option>General question</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="st-field-6">Message</label>
+          <textarea class="form__textarea" id="st-field-6" name="field-6" maxlength="250"></textarea>
+          <div class="form__meta">
+            <span>Tell us a bit about what you need</span>
+            <span>0/250</span>
+          </div>
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Send Message</button>
+          <button class="btn btn--secondary" type="reset">Clear</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
 
 </body>

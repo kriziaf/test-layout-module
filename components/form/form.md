@@ -13,3 +13,11 @@ Lead-capture form with five inputs, a message textarea, and a secondary (outline
 - Keep the required-note verbatim: "All fields are required unless marked optional" — it is the pattern users learn.
 - Intro copy should say what happens after submitting (response time, who follows up).
 - Helper text under the textarea is guidance, not legal copy; keep it under ten words.
+
+## Content system
+Follows the library's Conversion technique (see
+content-system.md): value-exchange framing, friction-reduction
+language. Both variants share the "Join us today" signup
+content—matching the Homepage template’s form—reshaped per
+layout (stacked keeps a light optional message field; two-column
+stays minimal).

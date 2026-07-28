@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- ============================================================
      Component Library — Demo Shell
-     v1.17 | Presentation artifact only — nothing here ships.
+     v1.31 | Presentation artifact only — nothing here ships.
      Component selector + variant/brand/breakpoint controls +
      View code sidebar (paste-ready markup, mirrors the
      component artifact in components/<name>/<name>.html).
@@ -17,7 +17,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="version" content="1.17">
+  <meta name="version" content="1.31">
   <title>Component Library — Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,11 +31,14 @@
   <link rel="stylesheet" href="components/button-group/button-group.css">
   <link rel="stylesheet" href="components/text-and-image/text-and-image.css">
   <link rel="stylesheet" href="components/form/form.css">
-  <link rel="stylesheet" href="components/feature-list/feature-list.css">
+  <link rel="stylesheet" href="components/list-item/list-item.css">
+  <!-- HIDDEN (kept for future use, not deleted): Icon Cards
   <link rel="stylesheet" href="components/icon-cards/icon-cards.css">
+  -->
   <link rel="stylesheet" href="components/external-link-cards/external-link-cards.css">
   <link rel="stylesheet" href="components/heading-block/heading-block.css">
   <link rel="stylesheet" href="components/horizontal-cards/horizontal-cards.css">
+  <link rel="stylesheet" href="components/highlight-bar/highlight-bar.css">
   <style>
     /* ---- Demo chrome only (not component styling) ---- */
     body { margin: 0; font-family: monospace; color: #000; background: #fff; }
@@ -84,7 +87,7 @@
     .demo-app { display: flex; align-items: stretch; }
     .demo-main { flex: 1 1 100%; min-width: 0; }
     .demo-stage { padding: 1rem; background: #CFCFCF; } /* canvas */
-    .demo-frame { margin: 0 auto; border: 1px dashed #000; background: #fff; }
+    .demo-frame { margin: 0 auto; border: 1px dashed #000; }
     .demo-frame[data-bp="mobile"]  { max-width: 400px; }
     .demo-frame[data-bp="tablet"]  { max-width: 768px; }
     .demo-frame[data-bp="desktop"] { max-width: 1440px; }
@@ -123,9 +126,9 @@
     <label for="template-select"><strong>Template</strong></label>
     <select id="template-select" aria-label="Template">
       <option value="">—</option>
-      <option value="a">Template A — Landing</option>
-      <option value="b">Template B — Overview</option>
-      <option value="c">Template C — Editorial</option>
+      <option value="homepage">Homepage — Virtual Care</option>
+      <option value="insights">Insights Page</option>
+      <option value="contact">Contact Us</option>
     </select>
 
     <fieldset id="variant-set">
@@ -190,8 +193,8 @@
     </div>
     <div class="text-and-image__content">
       <p class="text-and-image__eyebrow">EYEBROW TEXT</p>
-      <h2 class="text-and-image__headline">We’re defining what makes people happy</h2>
-      <p class="text-and-image__body">With the launch of Evernorth Accountable Care, Evernorth Health Services is championing a value-based ecosystem that connects patients to high-performing primary care providers (PCPs) and specialists at affordable costs and improved quality outcomes.</p>
+      <h2 class="text-and-image__headline">Care that fits into your day, not around it.</h2>
+      <p class="text-and-image__body">Skip the waiting room. Message your care team, join a video visit on your lunch break, and pick up prescriptions without rearranging your schedule.</p>
       <div class="text-and-image__actions">
           <a class="btn btn--primary" href="#">Primary CTA</a>
           <a class="btn btn--secondary" href="#">Secondary CTA</a>
@@ -207,8 +210,8 @@
     </div>
     <div class="text-and-image__content">
       <p class="text-and-image__eyebrow">EYEBROW TEXT</p>
-      <h2 class="text-and-image__headline">We’re defining what makes people happy</h2>
-      <p class="text-and-image__body">With the launch of Evernorth Accountable Care, Evernorth Health Services is championing a value-based ecosystem that connects patients to high-performing primary care providers (PCPs) and specialists at affordable costs and improved quality outcomes.</p>
+      <h2 class="text-and-image__headline">Care that fits into your day, not around it.</h2>
+      <p class="text-and-image__body">Skip the waiting room. Message your care team, join a video visit on your lunch break, and pick up prescriptions without rearranging your schedule.</p>
       <div class="text-and-image__actions">
           <a class="btn btn--primary" href="#">Primary CTA</a>
           <a class="btn btn--secondary" href="#">Secondary CTA</a>
@@ -224,8 +227,8 @@
     </div>
     <div class="text-and-image__content">
       <p class="text-and-image__eyebrow">EYEBROW TEXT</p>
-      <h2 class="text-and-image__headline">We’re defining what makes people happy</h2>
-      <p class="text-and-image__body">With the launch of Evernorth Accountable Care, Evernorth Health Services is championing a value-based ecosystem that connects patients to high-performing primary care providers (PCPs) and specialists at affordable costs and improved quality outcomes.</p>
+      <h2 class="text-and-image__headline">Care that fits into your day, not around it.</h2>
+      <p class="text-and-image__body">Skip the waiting room. Message your care team, join a video visit on your lunch break, and pick up prescriptions without rearranging your schedule.</p>
       <div class="text-and-image__actions">
           <a class="btn btn--primary" href="#">Primary CTA</a>
           <a class="btn btn--secondary" href="#">Secondary CTA</a>
@@ -239,43 +242,42 @@
     <div class="form__layout">
       <div class="form__intro">
         <div class="heading-block heading-block--left form__heading">
-          <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-          <h2 class="heading-block__title">Headline small</h2>
+          <p class="heading-block__eyebrow">GET STARTED</p>
+          <h2 class="heading-block__title">Join us today</h2>
         </div>
-        <p class="form__note">All fields are required unless marked optional</p>
-        <p>With the launch of Evernorth Accountable Care, Evernorth Health Services is championing a value-based ecosystem that connects patients to high-performing primary care providers (PCPs) and specialists at affordable costs and improved quality outcomes. <a href="#">Link Label</a></p>
+        <p class="form__note">Fields marked (optional) can be added later</p>
+        <p>Create your free account to book same-day visits, message your care team, and manage prescriptions—all in one place.</p>
       </div>
       <form class="form__fields" action="#" method="post">
         <div class="form__field">
-          <label class="form__label" for="tc-field-1">Label Text</label>
+          <label class="form__label" for="tc-field-1">First Name</label>
           <input class="form__input" type="text" id="tc-field-1" name="field-1">
         </div>
         <div class="form__field">
-          <label class="form__label" for="tc-field-2">Label Text</label>
+          <label class="form__label" for="tc-field-2">Last Name</label>
           <input class="form__input" type="text" id="tc-field-2" name="field-2">
         </div>
         <div class="form__field">
-          <label class="form__label" for="tc-field-3">Label Text</label>
+          <label class="form__label" for="tc-field-3">Email</label>
           <input class="form__input" type="text" id="tc-field-3" name="field-3">
         </div>
         <div class="form__field">
-          <label class="form__label" for="tc-field-4">Label Text <span class="form__optional">(optional)</span></label>
+          <label class="form__label" for="tc-field-4">Phone Number <span class="form__optional">(optional)</span></label>
           <input class="form__input" type="text" id="tc-field-4" name="field-4">
         </div>
         <div class="form__field">
-          <label class="form__label" for="tc-field-5">Label Text <span class="form__optional">(optional)</span></label>
-          <input class="form__input" type="text" id="tc-field-5" name="field-5">
-        </div>
-        <div class="form__field">
-          <label class="form__label" for="tc-field-6">Label Text</label>
-          <textarea class="form__textarea" id="tc-field-6" name="field-6" maxlength="250"></textarea>
-          <div class="form__meta">
-            <span>Short, clear message</span>
-            <span>0/250</span>
-          </div>
+          <label class="form__label" for="level-1">What brings you here?</label>
+          <select class="form__select" id="level-1" name="level">
+            <option value="">Select One</option>
+            <option>General checkup</option>
+            <option>Urgent care</option>
+            <option>Mental health</option>
+            <option>Prescription refill</option>
+            <option>Other</option>
+          </select>
         </div>
         <div class="form__actions">
-          <button class="btn btn--primary" type="submit">Submit</button>
+          <button class="btn btn--primary" type="submit">Create Account</button>
           <button class="btn btn--secondary" type="reset">Clear</button>
         </div>
       </form>
@@ -286,42 +288,49 @@
   <template id="tpl-form-stacked">
 <section class="form form--stacked">
     <header class="form__header">
-      <p class="form__eyebrow">EYEBROW TEXT</p>
-      <h2 class="form__headline">Headline small</h2>
-      <p class="form__note">All fields are required unless marked optional</p>
+      <p class="form__eyebrow">GET STARTED</p>
+      <h2 class="form__headline">Join us today</h2>
+      <p class="form__note">Fields marked (optional) can be added later</p>
     </header>
     <div class="form__layout">
       <form class="form__fields" action="#" method="post">
         <div class="form__field">
-          <label class="form__label" for="st-field-1">Label Text</label>
+          <label class="form__label" for="st-field-1">First Name</label>
           <input class="form__input" type="text" id="st-field-1" name="field-1">
         </div>
         <div class="form__field">
-          <label class="form__label" for="st-field-2">Label Text</label>
+          <label class="form__label" for="st-field-2">Last Name</label>
           <input class="form__input" type="text" id="st-field-2" name="field-2">
         </div>
         <div class="form__field">
-          <label class="form__label" for="st-field-3">Label Text</label>
+          <label class="form__label" for="st-field-3">Email</label>
           <input class="form__input" type="text" id="st-field-3" name="field-3">
         </div>
         <div class="form__field">
-          <label class="form__label" for="st-field-4">Label Text <span class="form__optional">(optional)</span></label>
+          <label class="form__label" for="st-field-4">Phone Number <span class="form__optional">(optional)</span></label>
           <input class="form__input" type="text" id="st-field-4" name="field-4">
         </div>
         <div class="form__field">
-          <label class="form__label" for="st-field-5">Label Text <span class="form__optional">(optional)</span></label>
-          <input class="form__input" type="text" id="st-field-5" name="field-5">
+          <label class="form__label" for="level-2">What brings you here?</label>
+          <select class="form__select" id="level-2" name="level">
+            <option value="">Select One</option>
+            <option>General checkup</option>
+            <option>Urgent care</option>
+            <option>Mental health</option>
+            <option>Prescription refill</option>
+            <option>Other</option>
+          </select>
         </div>
         <div class="form__field">
-          <label class="form__label" for="st-field-6">Label Text</label>
+          <label class="form__label" for="st-field-6">Anything else you’d like us to know? <span class="form__optional">(optional)</span></label>
           <textarea class="form__textarea" id="st-field-6" name="field-6" maxlength="250"></textarea>
           <div class="form__meta">
-            <span>Short, clear message</span>
+            <span>Optional, but helps us prep for your first visit</span>
             <span>0/250</span>
           </div>
         </div>
         <div class="form__actions">
-          <button class="btn btn--primary" type="submit">Submit</button>
+          <button class="btn btn--primary" type="submit">Create Account</button>
           <button class="btn btn--secondary" type="reset">Clear</button>
         </div>
       </form>
@@ -329,113 +338,109 @@
   </section>
   </template>
 
-  <template id="tpl-feature-list-links">
-<section class="feature-list feature-list--links">
-    <div class="heading-block heading-block--left feature-list__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
+  <template id="tpl-list-item-links">
+<section class="list-item list-item--links">
+    <div class="heading-block heading-block--left list-item__header">
+      <p class="heading-block__eyebrow">SERVICES</p>
+      <h2 class="heading-block__title">Everything your care starts with</h2>
+      <p class="heading-block__body">Explore the core pieces of the platform—start wherever makes sense for you.</p>
     </div>
-    <div class="feature-list__grid">
-      <div class="feature-list__item">
-        <svg class="feature-list__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,176H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V208ZM152,88a31.91,31.91,0,0,0-24,10.86A32,32,0,0,0,72,120c0,36.52,50.28,62.08,52.42,63.16a8,8,0,0,0,7.16,0C133.72,182.08,184,156.52,184,120A32,32,0,0,0,152,88Zm-24,78.93c-13.79-7.79-40-26.75-40-46.93a16,16,0,0,1,32,0,8,8,0,0,0,16,0,16,16,0,0,1,32,0C168,140.19,141.79,159.15,128,166.93Z"/></svg>
-        <h3 class="feature-list__heading">Headline Small</h3>
-        <p class="feature-list__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour.</p>
-        <a class="feature-list__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M72,144H32a8,8,0,0,1,0-16H67.72l13.62-20.44a8,8,0,0,1,13.32,0l25.34,38,9.34-14A8,8,0,0,1,136,128h24a8,8,0,0,1,0,16H140.28l-13.62,20.44a8,8,0,0,1-13.32,0L88,126.42l-9.34,14A8,8,0,0,1,72,144ZM178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,.75,0,1.5,0,2.25a8,8,0,1,0,16-.5c0-.58,0-1.17,0-1.75A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46c0,53.61-77.76,102.15-96,112.8-10.83-6.31-42.63-26-66.68-52.21a8,8,0,1,0-11.8,10.82c31.17,34,72.93,56.68,74.69,57.63a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40Z"/></svg>
+        <h3 class="list-item__heading">Integrated care networks</h3>
+        <p class="list-item__body">Access high-performing primary care and specialty providers connected across a single platform, reducing referral delays.</p>
+        <a class="list-item__link" href="#">See covered providers <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
       </div>
-      <div class="feature-list__item">
-        <svg class="feature-list__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,176H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V208ZM152,88a31.91,31.91,0,0,0-24,10.86A32,32,0,0,0,72,120c0,36.52,50.28,62.08,52.42,63.16a8,8,0,0,0,7.16,0C133.72,182.08,184,156.52,184,120A32,32,0,0,0,152,88Zm-24,78.93c-13.79-7.79-40-26.75-40-46.93a16,16,0,0,1,32,0,8,8,0,0,0,16,0,16,16,0,0,1,32,0C168,140.19,141.79,159.15,128,166.93Z"/></svg>
-        <h3 class="feature-list__heading">Headline Small</h3>
-        <p class="feature-list__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour.</p>
-        <a class="feature-list__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"/></svg>
+        <h3 class="list-item__heading">Transparent cost estimates</h3>
+        <p class="list-item__body">See your out-of-pocket costs before you book. No surprise bills, no hidden fees—just clear pricing you can plan around.</p>
+        <a class="list-item__link" href="#">Estimate your cost <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
       </div>
-      <div class="feature-list__item">
-        <svg class="feature-list__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,176H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V208ZM152,88a31.91,31.91,0,0,0-24,10.86A32,32,0,0,0,72,120c0,36.52,50.28,62.08,52.42,63.16a8,8,0,0,0,7.16,0C133.72,182.08,184,156.52,184,120A32,32,0,0,0,152,88Zm-24,78.93c-13.79-7.79-40-26.75-40-46.93a16,16,0,0,1,32,0,8,8,0,0,0,16,0,16,16,0,0,1,32,0C168,140.19,141.79,159.15,128,166.93Z"/></svg>
-        <h3 class="feature-list__heading">Headline Small</h3>
-        <p class="feature-list__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour.</p>
-        <a class="feature-list__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg>
+        <h3 class="list-item__heading">Prescription management</h3>
+        <p class="list-item__body">Fill, refill, and track your medications through home delivery or retail pharmacy—whatever works best for you.</p>
+        <a class="list-item__link" href="#">Manage prescriptions <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
       </div>
-      <div class="feature-list__item">
-        <svg class="feature-list__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,176H48V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V208ZM152,88a31.91,31.91,0,0,0-24,10.86A32,32,0,0,0,72,120c0,36.52,50.28,62.08,52.42,63.16a8,8,0,0,0,7.16,0C133.72,182.08,184,156.52,184,120A32,32,0,0,0,152,88Zm-24,78.93c-13.79-7.79-40-26.75-40-46.93a16,16,0,0,1,32,0,8,8,0,0,0,16,0,16,16,0,0,1,32,0C168,140.19,141.79,159.15,128,166.93Z"/></svg>
-        <h3 class="feature-list__heading">Headline Small</h3>
-        <p class="feature-list__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour.</p>
-        <a class="feature-list__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-      </div>
-    </div>
-  </section>
-  </template>
-
-  <template id="tpl-feature-list-stats">
-<section class="feature-list feature-list--stats">
-    <div class="heading-block heading-block--left feature-list__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
-    </div>
-    <div class="feature-list__grid">
-      <div class="feature-list__item">
-        <p class="feature-list__stat">99%</p>
-        <h3 class="feature-list__heading">Headline Small</h3>
-        <p class="feature-list__body">Lorem Ipsum text originates from Cicero’s text titled “de Finibus Bonorum et Malorum”.</p>
-      </div>
-      <div class="feature-list__item">
-        <p class="feature-list__stat">99%</p>
-        <h3 class="feature-list__heading">Headline Small</h3>
-        <p class="feature-list__body">Lorem Ipsum text originates from Cicero’s text titled “de Finibus Bonorum et Malorum”.</p>
-      </div>
-      <div class="feature-list__item">
-        <p class="feature-list__stat">99%</p>
-        <h3 class="feature-list__heading">Headline Small</h3>
-        <p class="feature-list__body">Lorem Ipsum text originates from Cicero’s text titled “de Finibus Bonorum et Malorum”.</p>
-      </div>
-      <div class="feature-list__item">
-        <p class="feature-list__stat">99%</p>
-        <h3 class="feature-list__heading">Headline Small</h3>
-        <p class="feature-list__body">Lorem Ipsum text originates from Cicero’s text titled “de Finibus Bonorum et Malorum”.</p>
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"/></svg>
+        <h3 class="list-item__heading">24/7 virtual care</h3>
+        <p class="list-item__body">Connect with board-certified clinicians any hour of the day. Urgent care, behavioral health, and chronic condition support—always available.</p>
+        <a class="list-item__link" href="#">Start a virtual visit <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
       </div>
     </div>
   </section>
   </template>
 
-  <template id="tpl-feature-list-articles">
-<section class="feature-list feature-list--articles">
-    <div class="heading-block heading-block--left feature-list__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
+  <template id="tpl-list-item-stats">
+<section class="list-item list-item--stats">
+    <div class="heading-block heading-block--left list-item__header">
+      <p class="heading-block__eyebrow">BY THE NUMBERS</p>
+      <h2 class="heading-block__title">A network that delivers</h2>
+      <p class="heading-block__body">Real numbers from real members, updated every quarter.</p>
     </div>
-    <div class="feature-list__grid">
-      <div class="feature-list__item">
-        <h3 class="feature-list__heading">Articles use a headline with a two-line char limit</h3>
-        <p class="feature-list__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour.</p>
-        <a class="feature-list__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <p class="list-item__stat">1.5M+</p>
+        <h3 class="list-item__heading">Integrated care networks</h3>
+        <p class="list-item__body">In-network providers connected across a single coordinated platform.</p>
       </div>
-      <div class="feature-list__item">
-        <h3 class="feature-list__heading">Articles use a headline with a two-line char limit</h3>
-        <p class="feature-list__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour.</p>
-        <a class="feature-list__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      <div class="list-item__item">
+        <p class="list-item__stat">$0</p>
+        <h3 class="list-item__heading">Transparent cost estimates</h3>
+        <p class="list-item__body">Surprise bills when you check your cost estimate before booking.</p>
       </div>
-      <div class="feature-list__item">
-        <h3 class="feature-list__heading">Articles use a headline with a two-line char limit</h3>
-        <p class="feature-list__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour.</p>
-        <a class="feature-list__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      <div class="list-item__item">
+        <p class="list-item__stat">24/7</p>
+        <h3 class="list-item__heading">24/7 virtual care</h3>
+        <p class="list-item__body">Access to board-certified clinicians, any hour, day or night.</p>
       </div>
-      <div class="feature-list__item">
-        <h3 class="feature-list__heading">Articles use a headline with a two-line char limit</h3>
-        <p class="feature-list__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour.</p>
-        <a class="feature-list__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      <div class="list-item__item">
+        <p class="list-item__stat">5 min</p>
+        <h3 class="list-item__heading">Prescription management</h3>
+        <p class="list-item__body">Average time to fill or refill a prescription online.</p>
       </div>
     </div>
   </section>
   </template>
 
+  <template id="tpl-list-item-articles">
+<section class="list-item list-item--articles">
+    <div class="heading-block heading-block--left list-item__header">
+      <p class="heading-block__eyebrow">HOW IT WORKS</p>
+      <h2 class="heading-block__title">Care, explained</h2>
+      <p class="heading-block__body">A closer look at how each part of the platform works together.</p>
+    </div>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <h3 class="list-item__heading">How integrated care networks cut your wait for a referral</h3>
+        <p class="list-item__body">Every provider and specialist in your plan works through one coordinated system, so care moves faster.</p>
+        <a class="list-item__link" href="#">Read more <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">What transparent pricing looks like before you book</h3>
+        <p class="list-item__body">See your exact out-of-pocket cost estimate before your visit—no surprise bills after the fact.</p>
+        <a class="list-item__link" href="#">Read more <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">Getting your prescriptions delivered, refilled, and tracked</h3>
+        <p class="list-item__body">Home delivery or retail pickup, with automatic refill reminders built in.</p>
+        <a class="list-item__link" href="#">Read more <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">Personalized health programs built around your goals</h3>
+        <p class="list-item__body">Condition management and wellness coaching tailored to your health history, not a generic plan.</p>
+        <a class="list-item__link" href="#">Read more <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+    </div>
+  </section>
+  </template>
+
+  <!-- HIDDEN (kept for future use, not deleted): Icon Cards three-up
   <template id="tpl-icon-cards-three-up">
 <section class="icon-cards icon-cards--three-up">
-    <div class="heading-block heading-block--left icon-cards__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
-    </div>
     <div class="icon-cards__grid">
       <a class="icon-cards__card" href="#">
         <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
@@ -452,14 +457,11 @@
     </div>
   </section>
   </template>
+  -->
 
+  <!-- HIDDEN (kept for future use, not deleted): Icon Cards six-up
   <template id="tpl-icon-cards-six-up">
 <section class="icon-cards icon-cards--six-up">
-    <div class="heading-block heading-block--left icon-cards__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
-    </div>
     <div class="icon-cards__grid">
       <a class="icon-cards__card" href="#">
         <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
@@ -488,26 +490,22 @@
     </div>
   </section>
   </template>
+  -->
 
   <template id="tpl-external-link-cards-quick-link">
 <section class="external-link-cards external-link-cards--quick-link">
-    <div class="heading-block heading-block--left external-link-cards__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
-    </div>
     <div class="external-link-cards__grid">
       <a class="external-link-cards__card" href="#">
         <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
-        <h3 class="external-link-cards__title">Refill a prescription <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
+        <h3 class="external-link-cards__title">Book a virtual visit <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
       </a>
       <a class="external-link-cards__card" href="#">
         <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
-        <h3 class="external-link-cards__title">Refill a prescription <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
+        <h3 class="external-link-cards__title">Manage your prescriptions <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
       </a>
       <a class="external-link-cards__card" href="#">
         <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
-        <h3 class="external-link-cards__title">Refill a prescription <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
+        <h3 class="external-link-cards__title">Find a provider <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
       </a>
     </div>
   </section>
@@ -515,34 +513,29 @@
 
   <template id="tpl-external-link-cards-heading">
 <section class="external-link-cards external-link-cards--heading">
-    <div class="heading-block heading-block--left external-link-cards__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
-    </div>
     <div class="external-link-cards__grid">
       <a class="external-link-cards__card" href="#">
         <div class="external-link-cards__top">
-          <h3 class="external-link-cards__title">Refill my prescriptions</h3>
+          <h3 class="external-link-cards__title">Book a virtual visit</h3>
           <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
         </div>
-        <p class="external-link-cards__body">Annual checkups, preventive, and ongoing care for common conditions like type 2 diabetes, high blood pressure.</p>
+        <p class="external-link-cards__body">See a board-certified provider today, no waiting room required.</p>
         <span class="external-link-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
       </a>
       <a class="external-link-cards__card" href="#">
         <div class="external-link-cards__top">
-          <h3 class="external-link-cards__title">Refill my prescriptions</h3>
+          <h3 class="external-link-cards__title">Manage your prescriptions</h3>
           <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
         </div>
-        <p class="external-link-cards__body">Annual checkups, preventive, and ongoing care for common conditions like type 2 diabetes, high blood pressure.</p>
+        <p class="external-link-cards__body">Fill, refill, and track your medications from your phone.</p>
         <span class="external-link-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
       </a>
       <a class="external-link-cards__card" href="#">
         <div class="external-link-cards__top">
-          <h3 class="external-link-cards__title">Refill my prescriptions</h3>
+          <h3 class="external-link-cards__title">Find a provider</h3>
           <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
         </div>
-        <p class="external-link-cards__body">Annual checkups, preventive, and ongoing care for common conditions like type 2 diabetes, high blood pressure.</p>
+        <p class="external-link-cards__body">Search by specialty, location, or availability to find the right fit.</p>
         <span class="external-link-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
       </a>
     </div>
@@ -551,20 +544,15 @@
 
   <template id="tpl-external-link-cards-image">
 <section class="external-link-cards external-link-cards--image">
-    <div class="heading-block heading-block--left external-link-cards__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
-    </div>
     <div class="external-link-cards__grid">
       <a class="external-link-cards__card" href="#">
         <div class="external-link-cards__media">
           <img src="img/external-link-card-photo.jpg" alt="A pharmacist reviewing a prescription">
         </div>
         <div class="external-link-cards__content">
-          <h3 class="external-link-cards__title">Schedule an appointment</h3>
-          <p class="external-link-cards__body">We’ll call to schedule free delivery to your home or doctor’s office, typically within 5–7 days of receiving your new prescription</p>
-          <span class="external-link-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          <h3 class="external-link-cards__title">Book a virtual visit</h3>
+          <p class="external-link-cards__body">Connect with a board-certified provider in minutes—no appointment needed for most visits.</p>
+          <span class="external-link-cards__link">Get started <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
       <a class="external-link-cards__card" href="#">
@@ -572,9 +560,9 @@
           <img src="img/external-link-card-photo.jpg" alt="A pharmacist reviewing a prescription">
         </div>
         <div class="external-link-cards__content">
-          <h3 class="external-link-cards__title">Schedule an appointment</h3>
-          <p class="external-link-cards__body">We’ll call to schedule free delivery to your home or doctor’s office, typically within 5–7 days of receiving your new prescription</p>
-          <span class="external-link-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          <h3 class="external-link-cards__title">Manage your prescriptions</h3>
+          <p class="external-link-cards__body">Request refills, track deliveries, and message your pharmacist, all from one place.</p>
+          <span class="external-link-cards__link">Get started <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
       <a class="external-link-cards__card" href="#">
@@ -582,9 +570,9 @@
           <img src="img/external-link-card-photo.jpg" alt="A pharmacist reviewing a prescription">
         </div>
         <div class="external-link-cards__content">
-          <h3 class="external-link-cards__title">Schedule an appointment</h3>
-          <p class="external-link-cards__body">We’ll call to schedule free delivery to your home or doctor’s office, typically within 5–7 days of receiving your new prescription</p>
-          <span class="external-link-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          <h3 class="external-link-cards__title">Find a provider</h3>
+          <p class="external-link-cards__body">Browse by specialty and read real reviews to find a provider who’s the right fit for you.</p>
+          <span class="external-link-cards__link">Get started <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
     </div>
@@ -713,36 +701,36 @@
   <template id="tpl-horizontal-cards-icon">
 <section class="horizontal-cards horizontal-cards--icon">
     <div class="heading-block heading-block--left horizontal-cards__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
+      <p class="heading-block__eyebrow">RESOURCES</p>
+      <h2 class="heading-block__title">News &amp; Insights</h2>
+      <p class="heading-block__body">Straightforward answers on virtual care, costs, and getting the most out of every visit.</p>
     </div>
     <div class="horizontal-cards__grid">
       <a class="horizontal-cards__card" href="#">
         <svg class="horizontal-cards__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
         <div class="horizontal-cards__content">
-          <h3 class="horizontal-cards__title">Find a health service location near you</h3>
+          <h3 class="horizontal-cards__title">5 Questions to Ask at Your First Virtual Visit</h3>
           <span class="horizontal-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
       <a class="horizontal-cards__card" href="#">
         <svg class="horizontal-cards__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
         <div class="horizontal-cards__content">
-          <h3 class="horizontal-cards__title">Find a health service location near you</h3>
+          <h3 class="horizontal-cards__title">How Same-Day Telehealth Is Changing Urgent Care</h3>
           <span class="horizontal-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
       <a class="horizontal-cards__card" href="#">
         <svg class="horizontal-cards__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
         <div class="horizontal-cards__content">
-          <h3 class="horizontal-cards__title">Find a health service location near you</h3>
+          <h3 class="horizontal-cards__title">Understanding Your Copay Before You Book</h3>
           <span class="horizontal-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
       <a class="horizontal-cards__card" href="#">
         <svg class="horizontal-cards__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
         <div class="horizontal-cards__content">
-          <h3 class="horizontal-cards__title">Find a health service location near you</h3>
+          <h3 class="horizontal-cards__title">When to See a Specialist vs. Your Primary Care Provider</h3>
           <span class="horizontal-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
@@ -753,9 +741,9 @@
   <template id="tpl-horizontal-cards-image-small">
 <section class="horizontal-cards horizontal-cards--image-small">
     <div class="heading-block heading-block--left horizontal-cards__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
+      <p class="heading-block__eyebrow">RESOURCES</p>
+      <h2 class="heading-block__title">News &amp; Insights</h2>
+      <p class="heading-block__body">Straightforward answers on virtual care, costs, and getting the most out of every visit.</p>
     </div>
     <div class="horizontal-cards__grid">
       <a class="horizontal-cards__card" href="#">
@@ -763,8 +751,8 @@
           <img src="img/horizontal-card-photo.jpg" alt="Colleagues talking around a meeting table">
         </div>
         <div class="horizontal-cards__content">
-          <h3 class="horizontal-cards__title">Find a health service location near you</h3>
-          <p class="horizontal-cards__body">Nunc amet vitae sit interdum non morbi fames ac sed, Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+          <h3 class="horizontal-cards__title">5 Questions to Ask at Your First Virtual Visit</h3>
+          <p class="horizontal-cards__body">A quick checklist to make the most of your first appointment, from testing your camera to listing your symptoms.</p>
           <span class="horizontal-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
@@ -773,8 +761,8 @@
           <img src="img/horizontal-card-photo.jpg" alt="Colleagues talking around a meeting table">
         </div>
         <div class="horizontal-cards__content">
-          <h3 class="horizontal-cards__title">Find a health service location near you</h3>
-          <p class="horizontal-cards__body">Nunc amet vitae sit interdum non morbi fames ac sed, Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+          <h3 class="horizontal-cards__title">How Same-Day Telehealth Is Changing Urgent Care</h3>
+          <p class="horizontal-cards__body">Why more people are skipping the waiting room for a video visit—and what conditions it’s actually good for.</p>
           <span class="horizontal-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
@@ -783,8 +771,8 @@
           <img src="img/horizontal-card-photo.jpg" alt="Colleagues talking around a meeting table">
         </div>
         <div class="horizontal-cards__content">
-          <h3 class="horizontal-cards__title">Find a health service location near you</h3>
-          <p class="horizontal-cards__body">Nunc amet vitae sit interdum non morbi fames ac sed, Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+          <h3 class="horizontal-cards__title">Understanding Your Copay Before You Book</h3>
+          <p class="horizontal-cards__body">How to check your cost estimate before you schedule, so there’s nothing to figure out after the visit.</p>
           <span class="horizontal-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
@@ -793,8 +781,8 @@
           <img src="img/horizontal-card-photo.jpg" alt="Colleagues talking around a meeting table">
         </div>
         <div class="horizontal-cards__content">
-          <h3 class="horizontal-cards__title">Find a health service location near you</h3>
-          <p class="horizontal-cards__body">Nunc amet vitae sit interdum non morbi fames ac sed, Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+          <h3 class="horizontal-cards__title">When to See a Specialist vs. Your Primary Care Provider</h3>
+          <p class="horizontal-cards__body">A simple guide to choosing the right kind of visit for what you’re dealing with.</p>
           <span class="horizontal-cards__link">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
         </div>
       </a>
@@ -805,9 +793,9 @@
   <template id="tpl-horizontal-cards-image-large">
 <section class="horizontal-cards horizontal-cards--image-large">
     <div class="heading-block heading-block--left horizontal-cards__header">
-      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
-      <h2 class="heading-block__title">Your title here</h2>
-      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
+      <p class="heading-block__eyebrow">RESOURCES</p>
+      <h2 class="heading-block__title">News &amp; Insights</h2>
+      <p class="heading-block__body">Straightforward answers on virtual care, costs, and getting the most out of every visit.</p>
     </div>
     <div class="horizontal-cards__grid">
       <div class="horizontal-cards__card">
@@ -815,9 +803,9 @@
           <img src="img/horizontal-card-photo.jpg" alt="Colleagues talking around a meeting table">
         </div>
         <div class="horizontal-cards__content">
-          <p class="horizontal-cards__subtitle">Subtitle</p>
-          <h3 class="horizontal-cards__title">Title</h3>
-          <p class="horizontal-cards__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p class="horizontal-cards__subtitle">TELEHEALTH</p>
+          <h3 class="horizontal-cards__title">5 Questions to Ask at Your First Virtual Visit</h3>
+          <p class="horizontal-cards__body">A quick checklist to make the most of your first appointment, from testing your camera to listing your symptoms.</p>
           <a class="horizontal-cards__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
         </div>
       </div>
@@ -826,9 +814,9 @@
           <img src="img/horizontal-card-photo.jpg" alt="Colleagues talking around a meeting table">
         </div>
         <div class="horizontal-cards__content">
-          <p class="horizontal-cards__subtitle">Subtitle</p>
-          <h3 class="horizontal-cards__title">Title</h3>
-          <p class="horizontal-cards__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p class="horizontal-cards__subtitle">COST & COVERAGE</p>
+          <h3 class="horizontal-cards__title">Understanding Your Copay Before You Book</h3>
+          <p class="horizontal-cards__body">How to check your cost estimate before you schedule, so there’s nothing to figure out after the visit.</p>
           <a class="horizontal-cards__link" href="#">Link Label <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
         </div>
       </div>
@@ -838,6 +826,28 @@
 
 
   <!-- Annotation copies of components/<name>/<name>.md — those files are the source of truth -->
+  <template id="md-highlight-bar"># Highlight Bar
+
+## Short description
+Dark proof-point band, themed per brand (bg/brand-xstrong + inverse-default text). Two variants: Icon List (three icon+heading+body columns) and Metrics (three large stats with dividers).
+
+## Content
+- Title: one confident sentence, centered.
+- Icon List items: short heading (3–6 words) + one to two sentence body explaining a capability.
+- Metrics items: the number is the headline—keep it short (e.g. &quot;94%&quot;, &quot;48hr&quot;); the label is one sentence of context, not a repeat of the number.
+
+## Marketing content notes
+- This band is for proof and confidence claims, not calls to action — there is no CTA slot by design.
+- Metrics need a source or measurement window nearby if used in regulated contexts.
+- Because the surface never changes with brand, copy here should read as company-wide fact, not brand-specific voice.
+
+## Content system
+Follows the library&#x27;s Proof &amp; Trust technique (see
+content-system.md): confident, declarative stat claims. The
+icon-list variant’s terminology is aligned with List Item’s
+canonical benefit names where the concepts overlap, so the same
+idea isn’t described two different ways across components.
+</template>
   <template id="md-button-group"># Button Group
 
 ## Short description
@@ -870,6 +880,13 @@ Page-opening split hero. Default pairs a light wash text panel with a photo; Inv
 - One hero per page; it owns the h1.
 - Inverse reads as product or sub-brand spotlight (the mockup shows &quot;Freedom Fertility Pharmacy&quot;); Default reads as the umbrella-brand statement.
 - Keep Inverse body copy short — the dark panel amplifies text density.
+
+## Content system
+Follows the library&#x27;s Value Proposition technique (see
+content-system.md): outcome-first headline, subhead names who
+it&#x27;s for and how, one low-friction CTA verb. Default and Inverse
+share the same virtual-care brand voice as List Item and the
+rest of the library.
 </template>
   <template id="md-header"># Header
 
@@ -903,6 +920,12 @@ Split section pairing one image with an eyebrow, headline, short paragraph, and 
 - This is the page opener in most stacks; lead with the value statement, not the org name.
 - One CTA only. If two actions compete, this is the wrong component.
 - Cutout suits portrait/people photography; Two Column suits landscape and environmental shots.
+
+## Content system
+Follows the library&#x27;s Feature Storytelling technique (see
+content-system.md): one feature-benefit bridge, told the same
+way across all three image treatments (fixed-image, cutout,
+two-column)—the story doesn&#x27;t change, only the imagery format.
 </template>
   <template id="md-form"># Form
 
@@ -919,8 +942,16 @@ Lead-capture form with five inputs, a message textarea, and a secondary (outline
 - Keep the required-note verbatim: &quot;All fields are required unless marked optional&quot; — it is the pattern users learn.
 - Intro copy should say what happens after submitting (response time, who follows up).
 - Helper text under the textarea is guidance, not legal copy; keep it under ten words.
+
+## Content system
+Follows the library&#x27;s Conversion technique (see
+content-system.md): value-exchange framing, friction-reduction
+language. Both variants share the &quot;Join us today&quot; signup
+content—matching the Homepage template’s form—reshaped per
+layout (stacked keeps a light optional message field; two-column
+stays minimal).
 </template>
-  <template id="md-feature-list"># Feature List
+<template id="md-list-item"># List Item
 
 ## Short description
 Four-across grid of short feature lockups under a left-justified heading block. Three types: Links (icon, heading, body, link), Stats (large figure, heading, body), Articles (two-line headline, body, link).
@@ -935,8 +966,24 @@ Four-across grid of short feature lockups under a left-justified heading block. 
 - Keep the four items parallel in length and grammatical form; the grid amplifies inconsistency.
 - Stats need a source or timeframe nearby if used in regulated contexts.
 - Link labels should name the destination, not &quot;Learn more&quot;.
+
+## Accent variant
+Circular accent-badge icon cards (folded in from the retired List Cards component). Icon badge (accent-filled circle, white glyph), bold heading, one to two sentence body — embeds the same left, no-CTA Heading Block header as the other variants.
+
+- Keep headings short (3–6 words) so they don&#x27;t wrap awkwardly against the icon badge.
+- Icons are a recognition aid — reuse the same icon for the same concept across pages.
+- Cards are non-interactive information blocks; pair with a separate CTA elsewhere on the page if a destination is needed.
+
+## Content system
+Follows the library&#x27;s Services &amp; Benefits technique (see
+content-system.md): benefit-led headers, parallel structure. All
+four variants (links, stats, articles, accent) share the SAME
+six underlying benefit ideas, reshaped per variant format rather
+than written independently — equal weight across the component
+group, not per-variant improvisation.
 </template>
-  <template id="md-icon-cards"># Icon Cards
+  <!-- HIDDEN (kept for future use, not deleted): Icon Cards annotation
+    <template id="md-icon-cards"># Icon Cards
 
 ## Short description
 Outlined tap-target cards, each a centered icon over a short heading. Two counts: 3-Up (one row) and 6-Up (three by two).
@@ -951,6 +998,7 @@ Outlined tap-target cards, each a centered icon over a short heading. Two counts
 - Do not mix task cards and promo cards in one grid.
 - 3-Up for primary tasks, 6-Up for directory-style hubs.
 </template>
+  -->
   <template id="md-heading-block"># Heading Block
 
 ## Short description
@@ -964,7 +1012,7 @@ Reusable section header: eyebrow, title, supporting copy, and an optional second
 - Two Column places eyebrow and title left, body and CTA right.
 
 ## Marketing content notes
-- This block also serves as the embedded header inside Feature List, Horizontal Cards, and the Two Column Form — copy written here sets the tone for the section below it.
+- This block also serves as the embedded header inside List Item, Horizontal Cards, and the Two Column Form — copy written here sets the tone for the section below it.
 - Skip the CTA when the section&#x27;s cards carry their own links; competing CTAs dilute both.
 </template>
   <template id="md-horizontal-cards"># Horizontal Cards
@@ -982,6 +1030,14 @@ Side-by-side content cards under a left-justified heading block. Three types: Ic
 - Image Small bodies get truncation pressure at tablet widths; front-load the value.
 - Image Large is an editorial/feature spotlight — one or two per page, not a feed.
 - Subtitle in Image Large is a category label, not a second headline.
+
+## Content system
+Follows the library&#x27;s News &amp; Insights technique (see
+content-system.md): curiosity-driven headlines (how-to, numbers,
+questions). All three variants (icon, image-small, image-large)
+share the same canonical article set—also reused by the
+Homepage template’s Insights section—reshaped per format
+rather than written independently.
 </template>
   <template id="md-external-link-cards"># External Link Cards
 
@@ -998,21 +1054,27 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
 - Quick Link titles are actions, Heading/Image titles are topics; do not swap the registers.
 - The icon chip is a recognition aid — reuse the same icon for the same task across pages.
 - Body copy in Image cards should answer &quot;what happens next&quot;, mirroring service expectations (delivery windows, response times).
+
+## Content system
+Follows the library&#x27;s Wayfinding technique (see
+content-system.md): answers &quot;what do you want to do today?&quot;,
+action-oriented. All three variants share the same three
+destinations (book a visit, manage prescriptions, find a
+provider), reshaped per format.
 </template>
 
   <template id="tpl-hero-default">
 <section class="hero hero--default">
     <div class="hero__layout">
       <div class="hero__panel">
-        <h1 class="hero__headline">Clarity when it matters most. Support at every step.</h1>
-        <p class="hero__body">Health care can be complex—but clarity makes all the difference. We connect the experiences and support that empower patients to move forward with confidence, enable providers to deliver frictionless care, and help businesses deliver stronger health outcomes for their employees.</p>
+        <h1 class="hero__headline">See a doctor today, from anywhere.</h1>
+        <p class="hero__body">Board-certified providers, same-day appointments, and prescriptions sent straight to your pharmacy—all from your phone, whenever you need care.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="#">Primary CTA</a>
-          <a class="btn btn--secondary" href="#">Secondary CTA</a>
+          <a class="btn btn--primary" href="#">Book a Visit</a>
         </div>
       </div>
       <div class="hero__media">
-        <img src="img/hero-default-photo.jpg" alt="A care team member speaking with a patient">
+        <img src="img/hero-default-photo.jpg" alt="A virtual care provider on a video visit">
       </div>
     </div>
   </section>
@@ -1022,14 +1084,14 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
 <section class="hero hero--inverse">
     <div class="hero__layout">
       <div class="hero__media">
-        <img src="img/hero-inverse-photo.jpg" alt="A pharmacist preparing a prescription">
+        <img src="img/hero-inverse-photo.jpg" alt="A fertility specialist reviewing a treatment plan">
       </div>
       <div class="hero__panel">
-        <h1 class="hero__headline">Freedom Fertility Pharmacy</h1>
-        <p class="hero__body">Subtext your health plan of choice. Use microcopy to add descriptors but keep it concise and direct to the point.</p>
+        <h1 class="hero__headline">Fertility care, without the wait.</h1>
+        <p class="hero__body">Connect with fertility specialists and get your prescriptions filled and delivered—built for people who don’t have time to wait for care.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary btn--inverse" href="#">Primary CTA</a>
-          <a class="btn btn--secondary btn--inverse" href="#">Secondary CTA</a>
+          <a class="btn btn--primary btn--inverse" href="#">Book a Visit</a>
+          <a class="btn btn--secondary btn--inverse" href="#">Learn More</a>
         </div>
       </div>
     </div>
@@ -1060,20 +1122,110 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
   </section>
   </template>
 
+
+  <template id="tpl-list-item-accent">
+<section class="list-item list-item--accent">
+    <div class="heading-block heading-block--left heading-block--no-cta list-item__header">
+      <p class="heading-block__eyebrow">WHY CHOOSE US</p>
+      <h2 class="heading-block__title">Why choose us</h2>
+      <p class="heading-block__body">Six reasons members stick with us after their first visit.</p>
+    </div>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M72,144H32a8,8,0,0,1,0-16H67.72l13.62-20.44a8,8,0,0,1,13.32,0l25.34,38,9.34-14A8,8,0,0,1,136,128h24a8,8,0,0,1,0,16H140.28l-13.62,20.44a8,8,0,0,1-13.32,0L88,126.42l-9.34,14A8,8,0,0,1,72,144ZM178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,.75,0,1.5,0,2.25a8,8,0,1,0,16-.5c0-.58,0-1.17,0-1.75A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46c0,53.61-77.76,102.15-96,112.8-10.83-6.31-42.63-26-66.68-52.21a8,8,0,1,0-11.8,10.82c31.17,34,72.93,56.68,74.69,57.63a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40Z"/></svg></span>
+        <h3 class="list-item__heading">Integrated care networks</h3>
+        <p class="list-item__body">Access high-performing primary care and specialty providers connected across a single platform, reducing referral delays.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"/></svg></span>
+        <h3 class="list-item__heading">Transparent cost estimates</h3>
+        <p class="list-item__body">See your out-of-pocket costs before you book. No surprise bills, no hidden fees—just clear pricing you can plan around.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
+        <h3 class="list-item__heading">Prescription management</h3>
+        <p class="list-item__body">Fill, refill, and track your medications through home delivery or retail pharmacy—whatever works best for you.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"/></svg></span>
+        <h3 class="list-item__heading">24/7 virtual care</h3>
+        <p class="list-item__body">Connect with board-certified clinicians any hour of the day. Urgent care, behavioral health, and chronic condition support—always available.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M216,64H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,56V184a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64Zm0,128H56a8,8,0,0,1-8-8V78.63A23.84,23.84,0,0,0,56,80H216Zm-48-60a12,12,0,1,1,12,12A12,12,0,0,1,168,132Z"/></svg></span>
+        <h3 class="list-item__heading">Benefits made simple</h3>
+        <p class="list-item__body">Your full benefits package in one dashboard. Deductibles, coverage details, EOBs, and spending accounts—organized and easy to read.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg></span>
+        <h3 class="list-item__heading">Personalized health programs</h3>
+        <p class="list-item__body">Condition management, wellness coaching, and preventive care programs tailored to your health history and goals.</p>
+      </div>
+    </div>
+  </section>
+  </template>
+
+  <template id="tpl-highlight-bar-icon-list">
+<section class="highlight-bar highlight-bar--icon-list">
+    <div class="highlight-bar__inner">
+      <h2 class="highlight-bar__title">Built for the way care actually works</h2>
+      <div class="highlight-bar__grid">
+      <div class="highlight-bar__item">
+        <span class="highlight-bar__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg></span>
+        <h3 class="highlight-bar__heading">Integrated care networks</h3>
+        <p class="highlight-bar__body">Every provider, specialist, and pharmacy you use works through a single coordinated platform—no gaps, no repeat paperwork.</p>
+      </div>
+      <div class="highlight-bar__item">
+        <span class="highlight-bar__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></svg></span>
+        <h3 class="highlight-bar__heading">Transparent cost estimates</h3>
+        <p class="highlight-bar__body">See your out-of-pocket costs before you book. No surprise bills, no hidden fees—just clear pricing you can plan around.</p>
+      </div>
+      <div class="highlight-bar__item">
+        <span class="highlight-bar__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg></span>
+        <h3 class="highlight-bar__heading">Dedicated health advocates</h3>
+        <p class="highlight-bar__body">A licensed professional helps you navigate referrals, understand coverage, and find the right care faster than navigating alone.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+  </template>
+
+  <template id="tpl-highlight-bar-metrics">
+<section class="highlight-bar highlight-bar--metrics">
+    <div class="highlight-bar__inner">
+      <h2 class="highlight-bar__title">Impact you can measure</h2>
+      <div class="highlight-bar__grid">
+      <div class="highlight-bar__item">
+        <p class="highlight-bar__stat">1.5M+</p>
+        <p class="highlight-bar__label">In-network providers available nationwide across every specialty</p>
+      </div>
+      <div class="highlight-bar__item">
+        <p class="highlight-bar__stat">94%</p>
+        <p class="highlight-bar__label">Member satisfaction rate, measured quarterly across all plan types</p>
+      </div>
+      <div class="highlight-bar__item">
+        <p class="highlight-bar__stat">48hr</p>
+        <p class="highlight-bar__label">Average time from specialist referral to confirmed appointment</p>
+      </div>
+      </div>
+    </div>
+  </section>
+  </template>
+
   <script>
     /* ---- Component registry ----
        Add new components here (and their templates above). */
     const COMPONENTS = {
       header: {
         label: 'Header',
-        version: '1.17',
+        version: '1.31',
         variants: [
           { id: 'default', label: 'Default' },
         ],
       },
       'button-group': {
         label: 'Button Group',
-        version: '1.17',
+        version: '1.31',
         variants: [
           { id: 'default', label: 'Default' },
           { id: 'inverse', label: 'Inverse' },
@@ -1081,7 +1233,7 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
       },
       hero: {
         label: 'Hero',
-        version: '1.17',
+        version: '1.31',
         variants: [
           { id: 'default', label: 'Default' },
           { id: 'inverse', label: 'Inverse' },
@@ -1089,7 +1241,7 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
       },
       'text-and-image': {
         label: 'Text and Image',
-        version: '1.17',
+        version: '1.31',
         variants: [
           { id: 'fixed-image', label: 'Fixed Image' },
           { id: 'cutout', label: 'Cutout' },
@@ -1098,32 +1250,35 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
       },
       form: {
         label: 'Form',
-        version: '1.17',
+        version: '1.31',
         variants: [
           { id: 'two-column', label: 'Two Column' },
           { id: 'stacked', label: 'Stacked' },
         ],
       },
-      'feature-list': {
-        label: 'Feature List',
-        version: '1.17',
+      'list-item': {
+        label: 'List Item',
+        version: '1.31',
         variants: [
           { id: 'links', label: 'Links' },
           { id: 'stats', label: 'Stats' },
           { id: 'articles', label: 'Articles' },
+          { id: 'accent', label: 'Accent' },
         ],
       },
+      /* HIDDEN (kept for future use, not deleted): Icon Cards
       'icon-cards': {
         label: 'Icon Cards',
-        version: '1.18',
+        version: '1.31',
         variants: [
           { id: 'three-up', label: '3-Up' },
           { id: 'six-up', label: '6-Up' },
         ],
       },
+      */
       'heading-block': {
         label: 'Heading Block',
-        version: '1.17',
+        version: '1.31',
         variants: [
           { id: 'center', label: 'Center' },
           { id: 'center-no-cta', label: 'Center (No CTA)' },
@@ -1135,16 +1290,24 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
       },
       'horizontal-cards': {
         label: 'Horizontal Cards',
-        version: '1.18',
+        version: '1.31',
         variants: [
           { id: 'icon', label: 'Icon' },
           { id: 'image-small', label: 'Image Small' },
           { id: 'image-large', label: 'Image Large' },
         ],
       },
+      'highlight-bar': {
+        label: 'Highlight Bar',
+        version: '1.31',
+        variants: [
+          { id: 'icon-list', label: 'Icon List' },
+          { id: 'metrics', label: 'Metrics' },
+        ],
+      },
       'external-link-cards': {
         label: 'External Link Cards',
-        version: '1.18',
+        version: '1.31',
         variants: [
           { id: 'quick-link', label: 'Quick Link' },
           { id: 'heading', label: 'Heading' },
@@ -1159,27 +1322,34 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
     /* Template stacks mirror templates/template-*.html
        (kept in sync manually; those files are the source of truth) */
     const TEMPLATES = {
-      a: { label: 'Template A — Landing', stack: [
-        ['header','default'], ['text-and-image','fixed-image'], ['feature-list','links'],
+      homepage: { label: 'Homepage — Virtual Care', stack: [
+        /* structural mirror of templates/template-homepage.html
+           (a CONTENT INSTANCE); demo shows generic artifact copy */
+        ['header','default'], ['hero','default'],
         ['heading-block','left-no-cta','tpl-section-heading'],
-        ['external-link-cards','quick-link','tpl-card-section'], ['external-link-cards','image'],
-        ['heading-block','left-no-cta','tpl-section-heading'],
-        ['icon-cards','three-up','tpl-card-section'],
-        ['horizontal-cards','icon'], ['form','two-column'] ] },
-      b: { label: 'Template B — Overview', stack: [
-        ['header','default'], ['text-and-image','two-column'], ['feature-list','stats'],
-        ['heading-block','left-no-cta','tpl-section-heading'],
-        ['external-link-cards','heading','tpl-card-section'], ['external-link-cards','quick-link'],
-        ['heading-block','left-no-cta','tpl-section-heading'],
-        ['icon-cards','six-up','tpl-card-section'],
-        ['horizontal-cards','image-small'], ['form','stacked'] ] },
-      c: { label: 'Template C — Editorial', stack: [
-        ['header','default'], ['text-and-image','cutout'], ['feature-list','articles'],
-        ['heading-block','left-no-cta','tpl-section-heading'],
-        ['external-link-cards','image','tpl-card-section'], ['external-link-cards','heading'],
-        ['heading-block','left-no-cta','tpl-section-heading'],
-        ['icon-cards','three-up','tpl-card-section'],
-        ['horizontal-cards','image-large'], ['form','stacked'] ] },
+        ['external-link-cards','quick-link','tpl-card-section'],
+        ['list-item','accent'],
+        ['horizontal-cards','image-small'],
+        ['form','two-column'] ] },
+      insights: { label: 'Insights Page', stack: [
+        /* structural mirror of templates/template-insights.html
+           (a CONTENT INSTANCE); demo shows generic artifact copy.
+           "Load More" button and newsletter form are simplified
+           inline in the real file; demo approximates with the
+           full form--stacked component for illustration. */
+        ['header','default'],
+        ['heading-block','center-no-cta'],
+        ['horizontal-cards','image-small'],
+        ['form','stacked'] ] },
+      contact: { label: 'Contact Us', stack: [
+        /* structural mirror of templates/template-contact.html
+           (a CONTENT INSTANCE); demo shows generic artifact copy */
+        ['header','default'],
+        ['hero','default'],
+        ['external-link-cards','heading'],
+        ['list-item','links'],
+        ['heading-block','center'],
+        ['form','stacked'] ] },
     };
     const variantSet = document.getElementById('variant-set');
     const frame = document.getElementById('frame');
@@ -1233,15 +1403,6 @@ Card set on the shared 3-across grid with three types: Quick Link (icon chip and
           const tpl = templateFor(c, v);
           const node = tpl.content.cloneNode(true);
           if (extra) node.querySelector('section, header')?.classList.add(extra);
-          if (c === 'icon-cards' || c === 'external-link-cards') {
-            // Templates A/B/C already place a standalone heading-block
-            // section ahead of these card zones (tpl-section-heading /
-            // tpl-card-section in templates.css). Strip the component's
-            // own embedded header (added in v1.18) here so Page Template
-            // previews don't double up; the standalone component preview
-            // (picked from the dropdown) still shows it.
-            node.querySelector('.heading-block')?.remove();
-          }
           frag.appendChild(node);
           code += tpl.innerHTML.trim() + '\n\n';
         }

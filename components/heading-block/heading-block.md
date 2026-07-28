@@ -11,5 +11,5 @@ Reusable section header: eyebrow, title, supporting copy, and an optional second
 - Two Column places eyebrow and title left, body and CTA right.
 
 ## Marketing content notes
-- This block also serves as the embedded header inside Feature List, Horizontal Cards, and the Two Column Form — copy written here sets the tone for the section below it.
+- This block also serves as the embedded header inside List Item, Horizontal Cards, and the Two Column Form — copy written here sets the tone for the section below it.
 - Skip the CTA when the section's cards carry their own links; competing CTAs dilute both.
