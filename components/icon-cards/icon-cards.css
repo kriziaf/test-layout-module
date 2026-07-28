@@ -1,16 +1,13 @@
 /* ============================================================
    Icon Cards Component — icon-cards.css
-   v1.18 | Token-driven. Consumes semantic tokens from tokens.css
+   v1.31 | Token-driven. Consumes semantic tokens from tokens.css
    via --ic-* bridge variables (defined in tokens.css).
-   Requires: tokens.css, base.css, heading-block.css (embedded
-   header), and a data-theme attribute on an ancestor:
-   evernorth | tcg | chc | white-label.
+   Requires: tokens.css, base.css, and a data-theme attribute on
+   an ancestor: evernorth | tcg | chc | white-label.
    Variants: .icon-cards--three-up (3 cards, one row at
              desktop) | .icon-cards--six-up (6 cards, 3x2)
    Both share the same responsive grid; the variant is the
    card count in markup.
-   Header: every variant embeds a Heading Block (left, no CTA)
-   as .icon-cards__header, same pattern as Horizontal Cards.
    Breakpoints (container query via base.css):
      <640px 1 column | 640-1023px 2 columns | >=1024px 3 columns
    ============================================================ */
@@ -22,12 +19,6 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 2rem 1rem;
-}
-
-.icon-cards .icon-cards__header {
-  padding: 0;
-  max-width: none;
-  margin: 0 0 2.5rem;
 }
 
 .icon-cards__grid {

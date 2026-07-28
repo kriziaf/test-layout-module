@@ -1,15 +1,11 @@
 /* ============================================================
    External Link Cards Component — external-link-cards.css
-   v1.18 | Token-driven. Consumes semantic tokens from tokens.css
+   v1.31 | Token-driven. Consumes semantic tokens from tokens.css
    via --elc-* bridge variables (defined in tokens.css).
-   Requires: tokens.css, base.css, heading-block.css (embedded
-   header), and a data-theme attribute on an ancestor:
-   evernorth | tcg | chc | white-label.
+   Requires: tokens.css, base.css, and a data-theme attribute on
+   an ancestor: evernorth | tcg | chc | white-label.
    Variants: .external-link-cards--quick-link | .external-link-cards--heading |
              .external-link-cards--image
-   Header: every variant embeds a Heading Block (left, no CTA)
-   as .external-link-cards__header, same pattern as Horizontal
-   Cards.
    Grid: reuses the Icon Cards system —
      <640px 1 column | 640-1023px 2 columns | >=1024px 3 columns
    States (all card types): default (gray border), hover (brand
@@ -25,12 +21,6 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 2rem 1rem;
-}
-
-.external-link-cards .external-link-cards__header {
-  padding: 0;
-  max-width: none;
-  margin: 0 0 2.5rem;
 }
 
 .external-link-cards__grid {

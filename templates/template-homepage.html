@@ -1,66 +1,52 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     Header — Component Artifact (developer deliverable)
-     v1.31 | Global navigation bar. (Note: unrelated to the
-     former "Hero" component, since renamed Text and Image.)
+     Homepage — Virtual Care (CONTENT INSTANCE)
+     v1.31 | Homepage architecture for a virtual-care brand
+     (Zocdoc-style content genre; original copy, not reproduced
+     from any single company's site). Carries real copy; not
+     regenerable from artifacts by pure copy — re-apply content
+     after any component resync.
+     Marketing landing: image hero, link features, quick-link + image cards, 3-up icon tiles, two-column form.
 
-     EVERYTHING INSIDE <body> IS SHIPPABLE MARKUP.
-     Annotations: components/header/header.md
-     Single variant; copy the <header> element.
+     SECTION ARCHITECTURE
+       0. header--default
+       1. hero--default              Hero
+       2. heading-block + external-link-cards--quick-link
+                                     Wayfinding ("How can we
+                                     help you?")
+       3. list-item--accent          Features & Benefits (6)
+       4. horizontal-cards--image-small
+                                     News & Insights (4)
+       5. form--two-column           Join us today
 
-     REQUIRED INCLUDES
-       css/tokens.css                     (semantic brand tokens)
-       css/base.css                       (.component-viewport wrapper)
-       components/header/header.css       (this component)
-       Google Fonts: Montserrat, Inter, Nunito
-
-     REQUIRED CONTEXT
-       - An ancestor element with data-theme set to one of:
-         evernorth | tcg | chc | white-label. The matching brand
-         logo shows automatically (all four ship in the markup;
-         CSS reveals the active one).
-       - Wrapped in .component-viewport. Full nav >=1024px;
-         hamburger + drawer below (CSS-only checkbox toggle —
-         no JavaScript required).
-
-     VARIANT API (modifier class on <header>)
-       header--default
-
-     CONTENT SLOTS
-       .header__logo        — brand link; logos extracted from
-                              the design SVGs (TCG / Evernorth /
-                              CHC). White Label ships a text
-                              placeholder — swap when a logo is
-                              provided.
-       .header__nav-link    — nav items; set aria-current="page"
-                              on the active item to fill the 4px
-                              underline (hover does the same)
-       .header__util        — Account / Login (Phosphor
-                              user-circle icons)
-
-     NOTES
-       - Bar shadow maps to the shadow/default color token.
-       - Duplicated nav/utils in .header__drawer serve the
-         mobile menu; keep both lists in sync when editing.
+     BRAND MODE: set data-theme on <body>:
+       evernorth | tcg | chc | white-label
      ============================================================ -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="version" content="1.31">
-  <title>Header — Component Artifact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/tokens.css">
-  <link rel="stylesheet" href="../../css/base.css">
-  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/templates.css">
+  <link rel="stylesheet" href="../components/header/header.css">
+  <link rel="stylesheet" href="../components/hero/hero.css">
+  <link rel="stylesheet" href="../components/text-and-image/text-and-image.css">
+  <link rel="stylesheet" href="../components/button-group/button-group.css">
+  <link rel="stylesheet" href="../components/heading-block/heading-block.css">
+  <link rel="stylesheet" href="../components/horizontal-cards/horizontal-cards.css">
+  <link rel="stylesheet" href="../components/list-item/list-item.css">
+  <link rel="stylesheet" href="../components/external-link-cards/external-link-cards.css">
+  <link rel="stylesheet" href="../components/icon-cards/icon-cards.css">
+  <link rel="stylesheet" href="../components/form/form.css">
+  <title>Homepage — Virtual Care</title>
 </head>
 <body data-theme="evernorth">
 
-<!-- ============================================
-     VARIANT 1 OF 1: header--default
-     ============================================ -->
 <div class="component-viewport">
   <header class="header header--default">
     <input class="header__menu-checkbox" type="checkbox" id="header-menu" aria-label="Toggle menu">
@@ -105,6 +91,191 @@
       </div>
     </div>
   </header>
+</div>
+
+<div class="component-viewport">
+  <section class="hero hero--default">
+    <div class="hero__layout">
+      <div class="hero__panel">
+        <h1 class="hero__headline">See a doctor today, from anywhere.</h1>
+        <p class="hero__body">Book same-day virtual visits with board-certified providers, get prescriptions sent to your pharmacy, and manage your care—all without leaving home.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#join">Book a Visit</a>
+          <a class="btn btn--secondary" href="#how-it-works">How It Works</a>
+        </div>
+      </div>
+      <div class="hero__media">
+        <img src="../img/hero-default-photo.jpg" alt="A care team member speaking with a patient">
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <section class="heading-block heading-block--left heading-block--no-cta tpl-section-heading">
+    <h2 class="heading-block__title">How can we help you?</h2>
+    <p class="heading-block__body">Whatever brings you here, we’ll get you to the right place in a couple of clicks.</p>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <section class="external-link-cards external-link-cards--quick-link tpl-card-section">
+    <div class="external-link-cards__grid">
+      <a class="external-link-cards__card" href="#join">
+        <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
+        <h3 class="external-link-cards__title">Set up an account <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
+      </a>
+      <a class="external-link-cards__card" href="#">
+        <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
+        <h3 class="external-link-cards__title">Find providers <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
+      </a>
+      <a class="external-link-cards__card" href="#">
+        <span class="external-link-cards__chip"><svg class="external-link-cards__chip-icon" viewBox="0 0 256 256" width="40" height="40" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
+        <h3 class="external-link-cards__title">Learn about our services <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></h3>
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <section class="list-item list-item--accent">
+    <div class="heading-block heading-block--left heading-block--no-cta list-item__header">
+      <p class="heading-block__eyebrow">EYEBROW TEXT</p>
+      <h2 class="heading-block__title">Why choose us</h2>
+      <p class="heading-block__body">There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
+    </div>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M72,144H32a8,8,0,0,1,0-16H67.72l13.62-20.44a8,8,0,0,1,13.32,0l25.34,38,9.34-14A8,8,0,0,1,136,128h24a8,8,0,0,1,0,16H140.28l-13.62,20.44a8,8,0,0,1-13.32,0L88,126.42l-9.34,14A8,8,0,0,1,72,144ZM178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,.75,0,1.5,0,2.25a8,8,0,1,0,16-.5c0-.58,0-1.17,0-1.75A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46c0,53.61-77.76,102.15-96,112.8-10.83-6.31-42.63-26-66.68-52.21a8,8,0,1,0-11.8,10.82c31.17,34,72.93,56.68,74.69,57.63a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40Z"/></svg></span>
+        <h3 class="list-item__heading">Integrated care networks</h3>
+        <p class="list-item__body">Access high-performing primary care and specialty providers connected across a single platform, reducing referral delays.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"/></svg></span>
+        <h3 class="list-item__heading">Transparent cost estimates</h3>
+        <p class="list-item__body">See your out-of-pocket costs before you book. No surprise bills, no hidden fees—just clear pricing you can plan around.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
+        <h3 class="list-item__heading">Prescription management</h3>
+        <p class="list-item__body">Fill, refill, and track your medications through home delivery or retail pharmacy—whatever works best for you.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"/></svg></span>
+        <h3 class="list-item__heading">24/7 virtual care</h3>
+        <p class="list-item__body">Connect with board-certified clinicians any hour of the day. Urgent care, behavioral health, and chronic condition support—always available.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M216,64H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,56V184a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64Zm0,128H56a8,8,0,0,1-8-8V78.63A23.84,23.84,0,0,0,56,80H216Zm-48-60a12,12,0,1,1,12,12A12,12,0,0,1,168,132Z"/></svg></span>
+        <h3 class="list-item__heading">Benefits made simple</h3>
+        <p class="list-item__body">Your full benefits package in one dashboard. Deductibles, coverage details, EOBs, and spending accounts—organized and easy to read.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg></span>
+        <h3 class="list-item__heading">Personalized health programs</h3>
+        <p class="list-item__body">Condition management, wellness coaching, and preventive care programs tailored to your health history and goals.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <section class="horizontal-cards horizontal-cards--image-small">
+    <div class="heading-block heading-block--left horizontal-cards__header">
+      <p class="heading-block__eyebrow">RESOURCES</p>
+      <h2 class="heading-block__title">News &amp; Insights</h2>
+      <p class="heading-block__body">Straightforward answers on virtual care, costs, and getting the most out of every visit.</p>
+    </div>
+    <div class="horizontal-cards__grid">
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">5 Questions to Ask at Your First Virtual Visit</h3>
+          <p class="horizontal-cards__body">A quick checklist to make the most of your first appointment.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">How Same-Day Telehealth Is Changing Urgent Care</h3>
+          <p class="horizontal-cards__body">Why more people are skipping the waiting room for a video visit.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">Understanding Your Copay Before You Book</h3>
+          <p class="horizontal-cards__body">How to check your cost estimate before you schedule.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">When to See a Specialist vs. Your Primary Care Provider</h3>
+          <p class="horizontal-cards__body">A simple guide to choosing the right kind of visit.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <section class="form form--two-column" id="join">
+    <div class="form__layout">
+      <div class="form__intro">
+        <div class="heading-block heading-block--left form__heading">
+          <h2 class="heading-block__title">Join us today</h2>
+        </div>
+        <p class="form__note">Fields marked (optional) can be added later</p>
+        <p>Create your free account to book same-day visits, message your care team, and manage prescriptions—all in one place.</p>
+      </div>
+      <form class="form__fields" action="#" method="post">
+        <div class="form__field">
+          <label class="form__label" for="tc-field-1">First Name</label>
+          <input class="form__input" type="text" id="tc-field-1" name="field-1">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="tc-field-2">Last Name</label>
+          <input class="form__input" type="text" id="tc-field-2" name="field-2">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="tc-field-3">Email</label>
+          <input class="form__input" type="text" id="tc-field-3" name="field-3">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="tc-field-4">Phone Number <span class="form__optional">(optional)</span></label>
+          <input class="form__input" type="text" id="tc-field-4" name="field-4">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="level-1">What brings you here?</label>
+          <select class="form__select" id="level-1" name="level">
+            <option value="">Select One</option>
+            <option>General checkup</option>
+            <option>Urgent care</option>
+            <option>Mental health</option>
+            <option>Prescription refill</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Create Account</button>
+          <button class="btn btn--secondary" type="reset">Clear</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
 
 </body>

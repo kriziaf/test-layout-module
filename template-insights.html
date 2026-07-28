@@ -1,66 +1,52 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     Header — Component Artifact (developer deliverable)
-     v1.31 | Global navigation bar. (Note: unrelated to the
-     former "Hero" component, since renamed Text and Image.)
+     Insights Page — News & Insights entry point (CONTENT INSTANCE)
+     v1.31 | Simple healthcare-themed hub linking out to
+     individual articles (not an article detail template). No
+     filtering or real pagination — "Load More" is a static
+     button, not a working component (see Project-roadmap.md,
+     Phase 2, for the filter/tag and pagination gaps this page
+     intentionally works around). Carries real copy; not
+     regenerable from artifacts by pure copy.
+     Marketing landing: image hero, link features, quick-link + image cards, 3-up icon tiles, two-column form.
 
-     EVERYTHING INSIDE <body> IS SHIPPABLE MARKUP.
-     Annotations: components/header/header.md
-     Single variant; copy the <header> element.
+     SECTION ARCHITECTURE
+       0. header--default
+       1. heading-block--center-no-cta   "News & Insights" intro
+       2. horizontal-cards--image-small  Article grid (8 items,
+                                         embedded header removed
+                                         — intro above covers it)
+       3. static "Load More Articles" button (no pagination)
+       4. form--stacked, trimmed to email only  Newsletter signup
 
-     REQUIRED INCLUDES
-       css/tokens.css                     (semantic brand tokens)
-       css/base.css                       (.component-viewport wrapper)
-       components/header/header.css       (this component)
-       Google Fonts: Montserrat, Inter, Nunito
-
-     REQUIRED CONTEXT
-       - An ancestor element with data-theme set to one of:
-         evernorth | tcg | chc | white-label. The matching brand
-         logo shows automatically (all four ship in the markup;
-         CSS reveals the active one).
-       - Wrapped in .component-viewport. Full nav >=1024px;
-         hamburger + drawer below (CSS-only checkbox toggle —
-         no JavaScript required).
-
-     VARIANT API (modifier class on <header>)
-       header--default
-
-     CONTENT SLOTS
-       .header__logo        — brand link; logos extracted from
-                              the design SVGs (TCG / Evernorth /
-                              CHC). White Label ships a text
-                              placeholder — swap when a logo is
-                              provided.
-       .header__nav-link    — nav items; set aria-current="page"
-                              on the active item to fill the 4px
-                              underline (hover does the same)
-       .header__util        — Account / Login (Phosphor
-                              user-circle icons)
-
-     NOTES
-       - Bar shadow maps to the shadow/default color token.
-       - Duplicated nav/utils in .header__drawer serve the
-         mobile menu; keep both lists in sync when editing.
+     BRAND MODE: set data-theme on <body>:
+       evernorth | tcg | chc | white-label
      ============================================================ -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="version" content="1.31">
-  <title>Header — Component Artifact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/tokens.css">
-  <link rel="stylesheet" href="../../css/base.css">
-  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/templates.css">
+  <link rel="stylesheet" href="../components/header/header.css">
+  <link rel="stylesheet" href="../components/hero/hero.css">
+  <link rel="stylesheet" href="../components/text-and-image/text-and-image.css">
+  <link rel="stylesheet" href="../components/button-group/button-group.css">
+  <link rel="stylesheet" href="../components/heading-block/heading-block.css">
+  <link rel="stylesheet" href="../components/horizontal-cards/horizontal-cards.css">
+  <link rel="stylesheet" href="../components/list-item/list-item.css">
+  <link rel="stylesheet" href="../components/external-link-cards/external-link-cards.css">
+  <link rel="stylesheet" href="../components/icon-cards/icon-cards.css">
+  <link rel="stylesheet" href="../components/form/form.css">
+  <title>Insights Page</title>
 </head>
 <body data-theme="evernorth">
 
-<!-- ============================================
-     VARIANT 1 OF 1: header--default
-     ============================================ -->
 <div class="component-viewport">
   <header class="header header--default">
     <input class="header__menu-checkbox" type="checkbox" id="header-menu" aria-label="Toggle menu">
@@ -105,6 +91,128 @@
       </div>
     </div>
   </header>
+</div>
+
+<div class="component-viewport">
+  <section class="heading-block heading-block--center heading-block--no-cta">
+    <h2 class="heading-block__title">News &amp; Insights</h2>
+    <p class="heading-block__body">Straightforward answers on virtual care, costs, and getting the most out of every visit—written by our clinical and care teams.</p>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <section class="horizontal-cards horizontal-cards--image-small">
+    <div class="horizontal-cards__grid">
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">5 Questions to Ask at Your First Virtual Visit</h3>
+          <p class="horizontal-cards__body">A quick checklist to make the most of your first appointment, from testing your camera to listing your symptoms.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">How Same-Day Telehealth Is Changing Urgent Care</h3>
+          <p class="horizontal-cards__body">Why more people are skipping the waiting room for a video visit—and what conditions it’s actually good for.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">Understanding Your Copay Before You Book</h3>
+          <p class="horizontal-cards__body">How to check your cost estimate before you schedule, so there’s nothing to figure out after the visit.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">When to See a Specialist vs. Your Primary Care Provider</h3>
+          <p class="horizontal-cards__body">A simple guide to choosing the right kind of visit for what you’re dealing with.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">The Real Cost of Skipping Your Annual Checkup</h3>
+          <p class="horizontal-cards__body">Preventive care catches problems early—here’s what an annual visit actually covers and why it’s worth the hour.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">Telehealth vs. In-Person: Which Is Right for This Symptom?</h3>
+          <p class="horizontal-cards__body">A quick decision guide for choosing between a video visit and heading to urgent care.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">How to Read Your Explanation of Benefits (EOB) in 5 Minutes</h3>
+          <p class="horizontal-cards__body">EOBs aren’t bills, but they’re easy to misread. Here’s what each section actually means.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+      <a class="horizontal-cards__card" href="#">
+        <div class="horizontal-cards__media">
+          <img src="../img/horizontal-card-photo.jpg" alt="">
+        </div>
+        <div class="horizontal-cards__content">
+          <h3 class="horizontal-cards__title">Managing a Chronic Condition Without the Constant Office Visits</h3>
+          <p class="horizontal-cards__body">Between refills, check-ins, and lab results, virtual care can cover most of what ongoing care needs.</p>
+          <span class="horizontal-cards__link">Read more <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="component-viewport">
+  <div style="text-align:center; padding: 0 1rem 3rem;">
+    <a class="btn btn--secondary" href="#">Load More Articles</a>
+  </div>
+</div>
+
+<div class="component-viewport">
+  <section class="form form--stacked">
+    <header class="form__header">
+      <p class="form__eyebrow">STAY INFORMED</p>
+      <h2 class="form__headline">Get insights in your inbox</h2>
+      <p class="form__note">One email a month. No spam, unsubscribe anytime.</p>
+    </header>
+    <div class="form__layout">
+      <form class="form__fields" action="#" method="post">
+        <div class="form__field">
+          <label class="form__label" for="st-field-1">Email address</label>
+          <input class="form__input" type="text" id="st-field-1" name="field-1">
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Subscribe</button>
+          
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
 
 </body>

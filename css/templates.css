@@ -1,6 +1,6 @@
 /* ============================================================
    Template Composition — templates.css
-   v1.17 | Page-level rhythm rules for Templates A/B/C.
+   v1.31 | Page-level rhythm rules for Templates A/B/C.
    Not component CSS: components remain untouched; these
    classes are applied in template markup (and by the demo's
    template mode) to pin heading-to-cards spacing.
@@ -14,7 +14,13 @@
    ============================================================ */
 
 .heading-block.tpl-section-heading {
-  padding-bottom: 0;
+  /* the 48px gap lives here as PADDING (paints the section's
+     white background) rather than as margin on the card
+     section (margins are transparent and let the page/stage
+     background show through as a gray band).
+     NOTE: assumes heading + cards sit on white; if a future
+     zone uses a tinted band, generalize to a surface class. */
+  padding-bottom: 48px;
 }
 
 .heading-block.tpl-section-heading > :last-child {
@@ -24,9 +30,6 @@
 }
 
 section.tpl-card-section {
-  /* element+class specificity beats component .block selectors
-     regardless of stylesheet order */
-  padding-top: 0 !important; /* wins over breakpoint padding */
-  margin-top: 48px !important; /* wins over component margin shorthand */
-  margin-bottom: 0;
+  padding-top: 0 !important; /* element+class specificity + important:
+     wins over component breakpoint padding regardless of order */
 }

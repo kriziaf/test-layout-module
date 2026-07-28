@@ -1,6 +1,6 @@
 /* ============================================================
    Hero Component — hero.css
-   v1.17 | Token-driven. Consumes semantic tokens from tokens.css
+   v1.31 | Token-driven. Consumes semantic tokens from tokens.css
    via --hero-* bridge variables (defined in tokens.css).
    (Unrelated to the former "Hero", renamed Text and Image.)
    Requires: tokens.css, base.css, and a data-theme attribute on

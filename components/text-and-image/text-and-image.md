@@ -14,3 +14,9 @@ Split section pairing one image with an eyebrow, headline, short paragraph, and 
 - This is the page opener in most stacks; lead with the value statement, not the org name.
 - One CTA only. If two actions compete, this is the wrong component.
 - Cutout suits portrait/people photography; Two Column suits landscape and environmental shots.
+
+## Content system
+Follows the library's Feature Storytelling technique (see
+content-system.md): one feature-benefit bridge, told the same
+way across all three image treatments (fixed-image, cutout,
+two-column)—the story doesn't change, only the imagery format.

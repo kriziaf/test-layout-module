@@ -13,3 +13,11 @@ Side-by-side content cards under a left-justified heading block. Three types: Ic
 - Image Small bodies get truncation pressure at tablet widths; front-load the value.
 - Image Large is an editorial/feature spotlight — one or two per page, not a feed.
 - Subtitle in Image Large is a category label, not a second headline.
+
+## Content system
+Follows the library's News & Insights technique (see
+content-system.md): curiosity-driven headlines (how-to, numbers,
+questions). All three variants (icon, image-small, image-large)
+share the same canonical article set—also reused by the
+Homepage template’s Insights section—reshaped per format
+rather than written independently.

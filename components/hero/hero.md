@@ -14,3 +14,10 @@ Page-opening split hero. Default pairs a light wash text panel with a photo; Inv
 - One hero per page; it owns the h1.
 - Inverse reads as product or sub-brand spotlight (the mockup shows "Freedom Fertility Pharmacy"); Default reads as the umbrella-brand statement.
 - Keep Inverse body copy short — the dark panel amplifies text density.
+
+## Content system
+Follows the library's Value Proposition technique (see
+content-system.md): outcome-first headline, subhead names who
+it's for and how, one low-friction CTA verb. Default and Inverse
+share the same virtual-care brand voice as List Item and the
+rest of the library.

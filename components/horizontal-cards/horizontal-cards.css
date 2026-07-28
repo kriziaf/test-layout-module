@@ -1,6 +1,6 @@
 /* ============================================================
    Horizontal Cards Component — horizontal-cards.css
-   v1.18 | Token-driven. Consumes semantic tokens from tokens.css
+   v1.31 | Token-driven. Consumes semantic tokens from tokens.css
    via --hc-* bridge variables (defined in tokens.css).
    Requires: tokens.css, base.css, heading-block.css (embedded
    header), and a data-theme attribute on an ancestor:
