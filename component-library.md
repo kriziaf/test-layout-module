@@ -1,6 +1,6 @@
 ---
 title: Component Library — Project Context
-version: "1.31"
+version: "1.34"
 updated: 2026-07-27
 scope: components + design tokens (no demo shell, no page templates)
 brands: [evernorth, tcg, chc, white-label]

@@ -1,6 +1,6 @@
 ---
 title: Layout Module — Demo Shell & Page Templates
-version: "1.31"
+version: "1.34"
 updated: 2026-07-27
 scope: presentation layer — demo shell, page templates, section rhythm
 brands: [evernorth, tcg, chc, white-label]
@@ -152,6 +152,13 @@ Composition-only rules; components stay untouched.
    stacks, annotations. Grep for residuals including inside the
    demo JS (post-rename stale strings in TEMPLATES silently
    no-op string replacements).
+6. **The Schema Sync Trio updates together.** Adding a component
+   updates `components.json` (its entry), the Component
+   Inventory table in `component-library.md` (its row), and the
+   content-job table in `content-system.md` (its row) — same
+   change, not three separate ones. This is the schema-level
+   equivalent of the component-level artifact trio; see
+   `design.md`'s non-negotiables for the full statement.
 
 ## Verification pattern
 

@@ -1,6 +1,6 @@
 /* ============================================================
    Heading Block Component — heading-block.css
-   v1.31 | Token-driven. Consumes semantic tokens from tokens.css
+   v1.34 | Token-driven. Consumes semantic tokens from tokens.css
    via --hb-* bridge variables (defined in tokens.css).
    Requires: tokens.css, base.css, and a data-theme attribute on
    an ancestor: evernorth | tcg | chc | white-label.
