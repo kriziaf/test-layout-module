@@ -27,7 +27,7 @@ jobs:
         run: python scripts/validate.py
 
       - name: Confirm components.json is valid JSON
-        run: python -c "import json; json.load(open('components.json')); print('components.json: valid JSON')"
+        run: python -c "import json; json.load(open('components.json')); print('components.json is valid JSON')"
 
       - name: Confirm no hardcoded hex values in brands.md
         run: |

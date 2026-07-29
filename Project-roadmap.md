@@ -1,9 +1,25 @@
 # Project Roadmap
 
 Running shelf of deferred and planned work for the component
-library. Current release: v1.35.
+library. Current release: v1.36.
 
 ## Phase 2 — Consistency & Polish
+
+- **GitHub sync — RESOLVED (2026-07-29).** The pushed repo
+  (`github.com/kriziaf/test-layout-module`) was reconciled with
+  this canonical v1.36 state: the `import/` staging folder and
+  root-level `template-*.html` duplicates (unconfirmed origin,
+  superseded) were removed; `.github/workflows/validate.yml`,
+  `scripts/validate.py`, `skills/build-component/SKILL.md`,
+  `WORK-SUMMARY.md`, `ecosystem-flow.md`, `executive-summary.md`,
+  and `quick-start.md` were added. Pushed as commit `9672468` on
+  `main`. One undocumented component (`feature-list`, no
+  canonical counterpart) was dropped in the process — recoverable
+  from git history if it turns out to be needed. **Follow-up
+  found on the first CI run:** `validate.yml` had a YAML syntax
+  bug (an unquoted colon inside a `run:` string) that made every
+  push/PR check fail before any job could even start — fixed in
+  the same change that added this note.
 
 - **`brands.md` — DONE (v1.34).** Brand boundary reference
   built: brand contract, registry (3 brands + 1 neutral
