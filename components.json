@@ -3,7 +3,7 @@
   "schemaVersion": "1.0",
   "library": {
     "name": "Cigna Group Multi-Brand Component Library",
-    "version": "1.31",
+    "version": "1.34",
     "brands": [
       "evernorth",
       "tcg",
@@ -597,5 +597,13 @@
         "Still carries generic placeholder content - excluded from the content-system rollout"
       ]
     }
+  },
+  "boundaryCheck": {
+    "rule": "Component CSS must not contain functional [data-theme=...] selectors, except header.css (brand logo reveal \u2014 see brands.md)",
+    "sanctionedExceptions": [
+      "header.css"
+    ],
+    "lastVerified": "2026-07-29",
+    "status": "pass"
   }
 }

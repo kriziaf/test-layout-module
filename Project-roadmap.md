@@ -5,6 +5,21 @@ library. Current release: v1.23.
 
 ## Phase 2 — Consistency & Polish
 
+- **`brands.md` — DONE (v1.34).** Brand boundary reference
+  built: brand contract, registry (3 brands + 1 neutral
+  skin), required token-surface checklist, the Header-logo
+  sanctioned exception, per-brand deviations, and add/swap/
+  remove/fork procedures. Boundary claim verified against
+  the codebase (only header.css has functional [data-theme]
+  selectors) and encoded as `components.json.boundaryCheck`.
+
+- **Ecosystem flow diagram + executive summary — DONE (v1.32).**
+  `ecosystem-flow.md` (Mermaid, five-layer flow + the
+  components.json validation loop) and `executive-summary.md`
+  (leadership one-pager: problem, solution, Tier 0 status, Tier
+  1-2 timeline and staffing ask) both shipped. Doc-site quick
+  reference is a separate deliverable, not yet started.
+
 - **Accessibility audit (NEW).** The Accessibility Standard is
   now written down in `component-library.md` and is enforced by
   construction, but no automated axe/Lighthouse pass and no
@@ -86,6 +101,41 @@ library. Current release: v1.23.
   are derived white-on-brand; swap values when specs arrive.
 - **Text and Image cutout** — clip-path version (currently a
   baked transparent PNG).
+
+## Phase 2.5 — Re-map Design Data Schema to Claude Design
+
+Claude Design's onboarding reads a team's codebase/design files
+and builds a design system (colors, typography, components) that
+every subsequent project uses automatically, and supports
+maintaining more than one design system per team. That's
+structurally the same job this schema already does manually —
+worth testing directly rather than assuming fit.
+
+- **Empirical test (do this first).** Point Claude Design at the
+  current repo/zip and record what its onboarding actually
+  extracts vs. misses, before building anything speculative.
+- **Output-format gap.** This library ships static HTML+CSS with
+  zero JavaScript, hand-authored BEM + CSS custom properties.
+  Claude Design's generated output may be framework-flavored
+  (React/Tailwind-leaning per public reporting). If the
+  onboarding reader wants that shape, a mapping layer
+  (components-as-React or a Tailwind config generated from
+  `tokens.css`) may be needed — confirm via the test above before
+  building it.
+- **No visual specimen exists.** Everything in the schema today
+  is text/code (md, json, css, html). A vision-capable onboarding
+  flow may extract more reliably from a rendered style-tile or
+  component screenshot sheet than from CSS alone. `demo.html` is
+  the closest thing today but is a live app, not a static image
+  asset. Candidate: a generated PNG/SVG specimen sheet, one frame
+  per component per brand.
+- **`brands.md` is the direct enabler** for "maintain more than
+  one design system" — finish it (already planned) with this use
+  case explicitly in mind: the brand/architecture split is what
+  would let Claude Design apply one team's structure to a
+  different brand's values without re-deriving the system.
+- **Depends on:** `brands.md` (Phase 2), and is otherwise
+  independent of Phase 3.
 
 ## Phase 3 — Attribute-Based Variant API
 

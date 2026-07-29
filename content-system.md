@@ -1,6 +1,6 @@
 ---
 title: Content System — Voice & Copywriting Guide
-version: "1.31"
+version: "1.34"
 updated: 2026-07-27
 kind: standard
 entry_point: design.md

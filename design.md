@@ -1,6 +1,6 @@
 ---
 title: Design System — Entry Point
-version: "1.31"
+version: "1.34"
 updated: 2026-07-27
 kind: manifest
 brands: [evernorth, tcg, chc, white-label]
@@ -34,6 +34,15 @@ entire page across four brands.
    Every section wraps in `.component-viewport`.
 6. **Accessibility rules are requirements, not preferences.**
    See the Accessibility Standard in `component-library.md`.
+7. **The Schema Sync Trio updates together.** Adding a component
+   means updating `components.json` (its entry), the Component
+   Inventory table in `component-library.md` (its row), and the
+   content-job table in `content-system.md` (its row) — in the
+   same change, never one without the others. This is the
+   schema-level equivalent of the component-level artifact trio
+   (`.html` + `.css` + `.md`) — same discipline, one level up.
+   Skipping this is exactly how the original doc-drift bug
+   happened.
 
 ## Ecosystem map
 
@@ -46,8 +55,11 @@ entire page across four brands.
 | `component-library.md` | System reference: token architecture, taxonomy, interaction states, a11y standard | Building or extending components |
 | `content-system.md` | Voice, per-component content jobs, canonical copy sets | Writing any user-facing copy |
 | `layout-module.md` | Demo shell + page templates + section rhythm + sync contracts | Template or demo work |
+| `brands.md` | Brand boundary, sanctioned exceptions, per-brand deviations | Adding/changing a brand |
 | `failure-modes.md` | Catalogued traps and their fixes | Before any bulk edit or refactor |
 | `Project-roadmap.md` | Parked work, phases, known gaps | Planning |
+| `ecosystem-flow.md` | Diagram of how all files relate (Mermaid) | Understanding the system's shape before extending it |
+| `executive-summary.md` | One-page leadership summary and resourcing ask | Non-technical stakeholder review |
 | `components/<name>/` | Artifact trio per component | Working on that component |
 | `templates/` | Page compositions (all content instances) | Building pages |
 
@@ -58,7 +70,7 @@ entire page across four brands.
 | **Build a new component** | `components.json`, `component-library.md`, `failure-modes.md` | Ship the artifact trio; register in demo; verify variant × brand × breakpoint |
 | **Add a variant to an existing component** | `components.json` (that entry), its artifact trio | Variant = modifier class on the section root; update `components.json` |
 | **Change a component's styling** | `css/tokens.css`, that component's `.css` | Change the token, not the rule, if it's a color/type/radius |
-| **Add or change a brand** | `variables.json`, `css/tokens.css`, `component-library.md` (token architecture) | Add one `[data-theme]` block; touch no component CSS |
+| **Add or change a brand** | `brands.md` first, then `variables.json`, `css/tokens.css` | Add one `[data-theme]` block; touch no component CSS except the sanctioned Header logo exception |
 | **Add a new token** | `variables.json` → `css/tokens.css` → the consuming bridge | Document as spec'd, derived, or provisional |
 | **Build a page template** | `layout-module.md`, `components.json`, `templates/` | Extract markup from artifacts; rewrite img paths; register in demo |
 | **Write or revise copy** | `content-system.md`, that component's `.md` | Match the component's content job; reshape shared content, don't reinvent |
