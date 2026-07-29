@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     Icon Cards — Component Artifact (developer deliverable)
+     v1.36
+
+     EVERYTHING INSIDE <body> IS SHIPPABLE MARKUP.
+     Annotations: components/icon-cards/icon-cards.md
+     Two self-contained variants; copy the one you need.
+
+     REQUIRED INCLUDES
+       css/tokens.css                         (semantic brand tokens)
+       css/base.css                           (.component-viewport wrapper)
+       components/icon-cards/icon-cards.css   (this component)
+       Google Fonts: Montserrat, Inter, Nunito
+       (CHC mode: Value Serif/Sans Pro licensed webfonts — falls
+        back to Georgia / Helvetica until provided)
+
+     REQUIRED CONTEXT
+       - An ancestor element with data-theme set to one of:
+         evernorth | tcg | chc | white-label
+       - Section wrapped in .component-viewport (container
+         queries: 1 col <640px, 2 cols 640-1023px, 3 cols >=1024px)
+
+     VARIANT API (modifier class on <section>)
+       icon-cards--three-up | icon-cards--six-up
+
+     CONTENT SLOTS
+       .icon-cards__card    — repeatable <a> (3 in three-up,
+                              6 in six-up; grid accepts any
+                              count). Cards are links;
+                              swap <a> for <div> if non-interactive.
+       .icon-cards__icon    — inline SVG using currentColor
+                              (Phosphor "first-aid" regular; replace per card)
+       .icon-cards__heading — heading xsmall, brand color
+
+     NOTES
+       - Card border maps to color/border/default; radius to
+         border-radius/container (16 / 30 / 30 / 24 by mode).
+       - Icon + heading inherit the brand color via currentColor.
+     ============================================================ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="version" content="1.36">
+  <title>Icon Cards — Component Artifact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="icon-cards.css">
+</head>
+<body data-theme="evernorth">
+
+<!-- ============================================
+     VARIANT 1 OF 2: icon-cards--three-up
+     ============================================ -->
+<div class="component-viewport">
+  <section class="icon-cards icon-cards--three-up">
+    <div class="icon-cards__grid">
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================
+     VARIANT 2 OF 2: icon-cards--six-up
+     ============================================ -->
+<div class="component-viewport">
+  <section class="icon-cards icon-cards--six-up">
+    <div class="icon-cards__grid">
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+      <a class="icon-cards__card" href="#">
+        <svg class="icon-cards__icon" viewBox="0 0 256 256" width="48" height="48" fill="currentColor" aria-hidden="true"><path d="M216,88H168V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V88H40a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H88v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V168h48a16,16,0,0,0,16-16V104A16,16,0,0,0,216,88Zm0,64H160a8,8,0,0,0-8,8v56H104V160a8,8,0,0,0-8-8H40V104H96a8,8,0,0,0,8-8V40h48V96a8,8,0,0,0,8,8h56Z"/></svg>
+        <h3 class="icon-cards__heading">Heading xsmall</h3>
+      </a>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

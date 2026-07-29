@@ -1,0 +1,188 @@
+/* ============================================================
+   External Link Cards Component — external-link-cards.css
+   v1.36 | Token-driven. Consumes semantic tokens from tokens.css
+   via --elc-* bridge variables (defined in tokens.css).
+   Requires: tokens.css, base.css, and a data-theme attribute on
+   an ancestor: evernorth | tcg | chc | white-label.
+   Variants: .external-link-cards--quick-link | .external-link-cards--heading |
+             .external-link-cards--image
+   Grid: reuses the Icon Cards system —
+     <640px 1 column | 640-1023px 2 columns | >=1024px 3 columns
+   States (all card types): default (gray border), hover (brand
+   border + hover wash), pressed/:active (brand border + active
+   wash), :focus-visible (3px brand ring) — from the mockup's
+   four state columns.
+   ============================================================ */
+
+.external-link-cards {
+  font-family: var(--elc-font);
+  color: var(--elc-ink);
+  background: #ffffff;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.external-link-cards__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* ---- Shared card shell + states ---- */
+
+.external-link-cards__card {
+  display: flex;
+  box-sizing: border-box;
+  border: 2px solid var(--elc-border);
+  border-radius: var(--elc-radius);
+  background: #ffffff;
+  color: var(--elc-ink);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+a.external-link-cards__card:hover {
+  border-color: var(--elc-accent);
+  background: var(--elc-hover-bg);
+}
+
+a.external-link-cards__card:active {
+  border-color: var(--elc-accent);
+  background: var(--elc-pressed-bg);
+}
+
+a.external-link-cards__card:focus-visible {
+  outline: none;
+  border-color: var(--elc-accent);
+  box-shadow: 0 0 0 1.5px var(--elc-accent); /* 2px border + 1.5px = ~3px ring */
+}
+
+/* ---- Icon chip (quick-link + heading) ---- */
+
+.external-link-cards__chip {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--elc-chip-bg);
+  color: var(--elc-accent);
+}
+
+.external-link-cards__chip-icon { display: block; }
+
+/* ---- Type: quick-link (horizontal row) ---- */
+
+.external-link-cards--quick-link .external-link-cards__card {
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+}
+
+.external-link-cards--quick-link .external-link-cards__title {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--elc-headline-font);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--elc-item-title); /* white-label reads #333333 */
+}
+
+/* ---- Type: heading (heading + chip right + body) ---- */
+
+.external-link-cards--heading .external-link-cards__card {
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+.external-link-cards--heading .external-link-cards__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.external-link-cards--heading .external-link-cards__title {
+  margin: 0;
+  font-family: var(--elc-headline-font);
+  font-size: var(--typography-headline-xsmall-font-size, 1.5rem);
+  line-height: var(--typography-headline-xsmall-line-height, 2rem);
+  font-weight: var(--typography-headline-xsmall-font-weight, 600);
+  color: var(--elc-item-title); /* white-label reads #333333 */
+}
+
+/* ---- Type: image (photo top + text + link) ---- */
+
+.external-link-cards--image .external-link-cards__card {
+  flex-direction: column;
+  border-width: 1px;
+}
+
+.external-link-cards--image .external-link-cards__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 350 / 160;
+  object-fit: cover;
+}
+
+.external-link-cards--image .external-link-cards__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+.external-link-cards--image .external-link-cards__title {
+  margin: 0;
+  font-family: var(--elc-headline-font);
+  font-size: var(--typography-headline-xsmall-font-size, 1.5rem);
+  line-height: var(--typography-headline-xsmall-line-height, 2rem);
+  font-weight: var(--typography-headline-xsmall-font-weight, 600);
+  color: var(--elc-item-title); /* white-label reads #333333 */
+}
+
+/* ---- Shared text bits ---- */
+
+.external-link-cards__body {
+  margin: 0;
+  font-size: var(--typography-body-default-font-size, 1rem);
+  line-height: var(--typography-body-default-line-height, 1.5rem);
+  color: var(--elc-ink);
+}
+
+.external-link-cards__link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  color: var(--elc-link);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.external-link-cards__link svg { display: block; }
+
+/* ---- Breakpoints (Icon Cards grid system) ---- */
+
+@container (min-width: 640px) {
+  .external-link-cards__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (min-width: 1024px) {
+  .external-link-cards {
+    padding: 4rem 7.5rem;
+  }
+
+  .external-link-cards__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

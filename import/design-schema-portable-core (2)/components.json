@@ -1,0 +1,609 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaVersion": "1.0",
+  "library": {
+    "name": "Cigna Group Multi-Brand Component Library",
+    "version": "1.35",
+    "brands": [
+      "evernorth",
+      "tcg",
+      "chc",
+      "white-label"
+    ],
+    "themeAttribute": "data-theme",
+    "delivery": "html+css artifacts (no JavaScript in components)",
+    "sourceOfTruth": {
+      "tokens": "variables.json (design export) -> css/tokens.css (resolved runtime)",
+      "markup": "components/<name>/<name>.html (artifacts) -> demo.html + templates/ are COPIES",
+      "inventory": "components.json (this file)"
+    }
+  },
+  "conventions": {
+    "naming": "BEM; block class == folder name == file name",
+    "variantApi": "modifier class on section root: .<block>--<variant>",
+    "bridgeVariables": "each component claims a --<ns>-* namespace mapped to semantic tokens in tokens.css",
+    "responsive": "container queries via .component-viewport wrapper; breakpoints 640 and 1024",
+    "artifactTrio": [
+      ".html (shippable markup + banner docs)",
+      ".css (component styles)",
+      ".md (content annotations)"
+    ]
+  },
+  "components": {
+    "button-group": {
+      "label": "Button Group",
+      "status": "stable",
+      "tier": "atom-host",
+      "variants": [
+        "default",
+        "inverse"
+      ],
+      "bridgeNamespace": "--btn-",
+      "files": {
+        "html": "components/button-group/button-group.html",
+        "css": "components/button-group/button-group.css",
+        "docs": "components/button-group/button-group.md"
+      },
+      "dependsOn": [],
+      "tokensConsumed": [
+        "border-radius/default",
+        "typography/body/font-family",
+        "color/button/primary/*",
+        "color/button/secondary/*",
+        "color/button/accent/*"
+      ],
+      "slots": [
+        "panel",
+        "note"
+      ],
+      "contentJob": "chrome",
+      "interactive": {
+        "atom": ".btn",
+        "modifiers": [
+          ".btn--primary",
+          ".btn--secondary",
+          ".btn--inverse"
+        ],
+        "states": [
+          "default",
+          "hover",
+          "active",
+          "focus-visible",
+          "disabled"
+        ],
+        "disabledApi": "aria-disabled=\"true\" (anchors) or [disabled] (buttons)",
+        "elements": [
+          "a",
+          "button"
+        ]
+      },
+      "notes": [
+        "Delivers the shared .btn atom consumed by heading-block, form, hero, text-and-image",
+        "Section itself is a showcase; the atom is the real deliverable"
+      ]
+    },
+    "header": {
+      "label": "Header",
+      "status": "stable",
+      "tier": "component",
+      "variants": [
+        "default"
+      ],
+      "bridgeNamespace": "--hd-",
+      "files": {
+        "html": "components/header/header.html",
+        "css": "components/header/header.css",
+        "docs": "components/header/header.md"
+      },
+      "dependsOn": [],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/brand",
+        "shadow/default/color",
+        "typography/body/font-family"
+      ],
+      "slots": [
+        "bar",
+        "logo",
+        "logo-mark",
+        "logo-text",
+        "logo-tcg",
+        "logo-evernorth",
+        "logo-chc",
+        "logo-white-label",
+        "nav",
+        "nav-list",
+        "nav-link",
+        "utils",
+        "util",
+        "menu-checkbox",
+        "menu-button",
+        "icon-open",
+        "icon-close",
+        "drawer"
+      ],
+      "contentJob": "chrome",
+      "interactive": {
+        "states": [
+          "hover",
+          "focus-visible",
+          "aria-current=page"
+        ],
+        "activeIndicator": "4px bottom border (desktop) / 4px left border (drawer)",
+        "mobileMenu": "CSS-only checkbox toggle, no JavaScript"
+      },
+      "notes": [
+        "All four brand logos ship in markup; CSS reveals the one matching data-theme",
+        "White Label logo is a text placeholder pending a real asset",
+        "Nav and utils are duplicated inside the drawer - keep both lists in sync"
+      ]
+    },
+    "hero": {
+      "label": "Hero",
+      "status": "stable",
+      "tier": "component",
+      "variants": [
+        "default",
+        "inverse"
+      ],
+      "bridgeNamespace": "--hero-",
+      "files": {
+        "html": "components/hero/hero.html",
+        "css": "components/hero/hero.css",
+        "docs": "components/hero/hero.md"
+      },
+      "dependsOn": [
+        "button-group"
+      ],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/brand",
+        "color/content/inverse",
+        "color/bg/hero-canvas",
+        "color/button/secondary/bg-hover",
+        "border-radius/default"
+      ],
+      "slots": [
+        "layout",
+        "panel",
+        "media",
+        "headline",
+        "body",
+        "actions"
+      ],
+      "contentJob": "value-proposition",
+      "notes": [
+        "default: wash panel left + photo right",
+        "inverse: photo left + brand panel right with .btn--inverse pair, floats on canvas at desktop",
+        "Below 1024 the panel stacks ABOVE the image (order properties override source order)",
+        ".hero__actions is omittable (see Contact Us template)"
+      ]
+    },
+    "text-and-image": {
+      "label": "Text and Image",
+      "status": "stable",
+      "tier": "component",
+      "variants": [
+        "fixed-image",
+        "cutout",
+        "two-column"
+      ],
+      "bridgeNamespace": "--tai-",
+      "files": {
+        "html": "components/text-and-image/text-and-image.html",
+        "css": "components/text-and-image/text-and-image.css",
+        "docs": "components/text-and-image/text-and-image.md"
+      },
+      "dependsOn": [
+        "button-group"
+      ],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/subtle",
+        "color/content/brand",
+        "color/content/brand-strong",
+        "border-radius/large"
+      ],
+      "slots": [
+        "media",
+        "content",
+        "eyebrow",
+        "headline",
+        "body",
+        "actions"
+      ],
+      "contentJob": "feature-storytelling",
+      "notes": [
+        "cutout variant uses a baked transparent PNG; clip-path version is on the roadmap"
+      ]
+    },
+    "heading-block": {
+      "label": "Heading Block",
+      "status": "stable",
+      "tier": "pattern-module",
+      "variants": [
+        "center",
+        "center-no-cta",
+        "left",
+        "left-no-cta",
+        "two-column",
+        "two-column-no-cta"
+      ],
+      "bridgeNamespace": "--hb-",
+      "files": {
+        "html": "components/heading-block/heading-block.html",
+        "css": "components/heading-block/heading-block.css",
+        "docs": "components/heading-block/heading-block.md"
+      },
+      "dependsOn": [
+        "button-group"
+      ],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/subtle",
+        "color/content/brand",
+        "color/content/brand-strong",
+        "typography/headline/small"
+      ],
+      "slots": [
+        "eyebrow",
+        "title",
+        "body",
+        "actions",
+        "main",
+        "intro",
+        "aside"
+      ],
+      "contentJob": "section-framing",
+      "notes": [
+        "--no-cta is an API marker only; behavior comes from omitting .heading-block__actions",
+        "Embedded as the section header inside list-item, horizontal-cards, and form--two-column",
+        "Content is inherited from whichever component embeds it"
+      ]
+    },
+    "form": {
+      "label": "Form",
+      "status": "stable",
+      "tier": "component",
+      "variants": [
+        "two-column",
+        "stacked"
+      ],
+      "bridgeNamespace": "--form-",
+      "files": {
+        "html": "components/form/form.html",
+        "css": "components/form/form.css",
+        "docs": "components/form/form.md"
+      },
+      "dependsOn": [
+        "heading-block",
+        "button-group"
+      ],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/subtle",
+        "color/content/brand",
+        "color/content/brand-strong",
+        "color/border/default",
+        "border-radius/component/field"
+      ],
+      "slots": [
+        "layout",
+        "intro",
+        "heading",
+        "header",
+        "eyebrow",
+        "headline",
+        "note",
+        "fields",
+        "field",
+        "label",
+        "optional",
+        "input",
+        "select",
+        "textarea",
+        "meta",
+        "actions"
+      ],
+      "contentJob": "conversion",
+      "interactive": {
+        "fieldHeight": "48px",
+        "states": [
+          "default",
+          "focus-visible"
+        ],
+        "focus": "2px brand outline, offset 1, border flips to brand",
+        "selectApi": ".form__select with inline-SVG chevron, appearance:none"
+      },
+      "notes": [
+        "two-column embeds a Heading Block in the left column (.form__heading)",
+        "stacked keeps its own bespoke centered .form__header - deliberate split ownership"
+      ]
+    },
+    "list-item": {
+      "label": "List Item",
+      "status": "stable",
+      "tier": "component",
+      "variants": [
+        "links",
+        "stats",
+        "articles",
+        "accent"
+      ],
+      "bridgeNamespace": "--li-",
+      "files": {
+        "html": "components/list-item/list-item.html",
+        "css": "components/list-item/list-item.css",
+        "docs": "components/list-item/list-item.md"
+      },
+      "dependsOn": [
+        "heading-block"
+      ],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/subtle",
+        "color/content/brand",
+        "color/content/list-title",
+        "color/content/link",
+        "color/content/link-hover",
+        "color/border/default",
+        "border-radius/container"
+      ],
+      "slots": [
+        "header",
+        "grid",
+        "item",
+        "icon",
+        "heading",
+        "stat",
+        "body",
+        "link"
+      ],
+      "grid": {
+        "mobile": 1,
+        "tablet": 2,
+        "desktop": 4,
+        "overrides": {
+          "accent": {
+            "desktop": 3
+          }
+        }
+      },
+      "contentJob": "services-and-benefits",
+      "notes": [
+        "All four variants embed a Heading Block header (left, no CTA)",
+        "accent folded in from the retired standalone List Cards component",
+        "NAMING TRAP: .list-item__header (section wrapper) vs .list-item__heading (item h3)",
+        "All variants share the same six canonical benefit ideas, reshaped per format"
+      ]
+    },
+    "horizontal-cards": {
+      "label": "Horizontal Cards",
+      "status": "stable",
+      "tier": "component",
+      "variants": [
+        "icon",
+        "image-small",
+        "image-large"
+      ],
+      "bridgeNamespace": "--hc-",
+      "files": {
+        "html": "components/horizontal-cards/horizontal-cards.html",
+        "css": "components/horizontal-cards/horizontal-cards.css",
+        "docs": "components/horizontal-cards/horizontal-cards.md"
+      },
+      "dependsOn": [
+        "heading-block"
+      ],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/subtle",
+        "color/content/brand",
+        "color/content/link",
+        "color/content/link-hover",
+        "color/border/default",
+        "border-radius/container"
+      ],
+      "slots": [
+        "header",
+        "grid",
+        "card",
+        "media",
+        "content",
+        "icon",
+        "subtitle",
+        "title",
+        "body",
+        "link"
+      ],
+      "grid": {
+        "mobile": 1,
+        "tablet": 2,
+        "desktop": 2,
+        "overrides": {
+          "image-large": {
+            "mobile": 1,
+            "tablet": 1,
+            "desktop": 1
+          }
+        }
+      },
+      "contentJob": "news-and-insights",
+      "interactive": {
+        "states": [
+          "hover",
+          "focus-visible"
+        ],
+        "cardAsLink": "icon and image-small cards are whole-card <a>; image-large is <div> with a real <a>"
+      },
+      "notes": [
+        "Embeds a Heading Block header (left, no CTA)",
+        "image-small photo is 140px flush-left; image-large is 375px"
+      ]
+    },
+    "external-link-cards": {
+      "label": "External Link Cards",
+      "status": "stable",
+      "tier": "component",
+      "variants": [
+        "quick-link",
+        "heading",
+        "image"
+      ],
+      "bridgeNamespace": "--elc-",
+      "files": {
+        "html": "components/external-link-cards/external-link-cards.html",
+        "css": "components/external-link-cards/external-link-cards.css",
+        "docs": "components/external-link-cards/external-link-cards.md"
+      },
+      "dependsOn": [],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/brand",
+        "color/content/link",
+        "color/bg/chip",
+        "color/border/default",
+        "border-radius/container",
+        "color/button/secondary/bg-hover",
+        "color/button/secondary/bg-active"
+      ],
+      "slots": [
+        "grid",
+        "card",
+        "chip",
+        "chip-icon",
+        "top",
+        "title",
+        "body",
+        "media",
+        "content",
+        "link"
+      ],
+      "grid": {
+        "mobile": 1,
+        "tablet": 2,
+        "desktop": 3
+      },
+      "contentJob": "wayfinding",
+      "interactive": {
+        "states": [
+          "default",
+          "hover",
+          "pressed",
+          "focus-visible"
+        ],
+        "stateSpec": {
+          "default": "2px border/default gray on white",
+          "hover": "2px brand border + secondary bg-hover wash",
+          "pressed": "2px brand border + secondary bg-active wash",
+          "focus-visible": "brand border + box-shadow ring (~3px total)"
+        },
+        "cardAsLink": "whole-card <a>; nested link text is <span> to avoid nesting anchors"
+      },
+      "notes": [
+        "Evernorth chip background #E8FFF8 is a mockup value not present in the token JSON - flagged",
+        "If a card needs real nested links, use <div> instead of <a> (see Contact Us template)"
+      ]
+    },
+    "highlight-bar": {
+      "label": "Highlight Bar",
+      "status": "stable",
+      "tier": "component",
+      "variants": [
+        "icon-list",
+        "metrics"
+      ],
+      "bridgeNamespace": "--hlb-",
+      "files": {
+        "html": "components/highlight-bar/highlight-bar.html",
+        "css": "components/highlight-bar/highlight-bar.css",
+        "docs": "components/highlight-bar/highlight-bar.md"
+      },
+      "dependsOn": [],
+      "tokensConsumed": [
+        "color/bg/brand-xstrong",
+        "color/content/inverse-default",
+        "typography/body/font-family",
+        "typography/headline/font-family"
+      ],
+      "slots": [
+        "inner",
+        "title",
+        "grid",
+        "item",
+        "icon",
+        "heading",
+        "body",
+        "stat",
+        "label"
+      ],
+      "grid": {
+        "mobile": 1,
+        "tablet": 3,
+        "desktop": 3
+      },
+      "contentJob": "proof-and-trust",
+      "notes": [
+        "Dark surface themed per brand via color/bg/brand-xstrong",
+        "All text/icons use color/content/inverse-default (white in every mode)",
+        "No CTA slot by design - this is a proof band, not a conversion surface",
+        "metrics dividers flip from top-border (stacked) to left-border (desktop columns)"
+      ]
+    },
+    "icon-cards": {
+      "label": "Icon Cards",
+      "status": "hidden",
+      "tier": "component",
+      "variants": [
+        "three-up",
+        "six-up"
+      ],
+      "bridgeNamespace": "--ic-",
+      "files": {
+        "html": "components/icon-cards/icon-cards.html",
+        "css": "components/icon-cards/icon-cards.css",
+        "docs": "components/icon-cards/icon-cards.md"
+      },
+      "dependsOn": [],
+      "tokensConsumed": [
+        "color/content/default",
+        "color/content/brand",
+        "color/content/list-title",
+        "color/border/default",
+        "border-radius/container",
+        "color/button/secondary/bg-hover"
+      ],
+      "slots": [
+        "grid",
+        "card",
+        "icon",
+        "heading"
+      ],
+      "grid": {
+        "mobile": 1,
+        "tablet": 2,
+        "desktop": 3
+      },
+      "interactive": {
+        "states": [
+          "hover",
+          "focus-visible"
+        ],
+        "cardAsLink": "whole-card <a>"
+      },
+      "notes": [
+        "HIDDEN as of v1.27: commented out of demo.html and omitted from context docs",
+        "Files are intact on disk; un-comment four blocks in demo.html to restore",
+        "Still carries generic placeholder content - excluded from the content-system rollout"
+      ]
+    }
+  },
+  "boundaryCheck": {
+    "rule": "Component CSS must not contain functional [data-theme=...] selectors, except header.css (brand logo reveal \u2014 see brands.md)",
+    "sanctionedExceptions": [
+      "header.css"
+    ],
+    "lastVerified": "2026-07-29",
+    "status": "pass"
+  }
+}

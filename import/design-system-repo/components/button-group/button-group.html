@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     Button Group — Component Artifact (developer deliverable)
+     v1.36 | The .btn atom (Primary / Secondary, Default /
+     Inverse) with its showcase section.
+     Annotations: components/button-group/button-group.md
+
+     EVERYTHING INSIDE <body> IS SHIPPABLE MARKUP.
+     The reusable unit is the .btn element, not the section:
+       <a class="btn btn--primary" href="...">Label</a>
+       <a class="btn btn--secondary" href="...">Label</a>
+       add .btn--inverse on dark brand surfaces
+       add aria-disabled="true" (or disabled on <button>) to
+       disable
+     Works on <a> and <button> alike.
+
+     REQUIRED INCLUDES
+       css/tokens.css                             (semantic brand tokens)
+       css/base.css                               (.component-viewport wrapper)
+       components/button-group/button-group.css   (atom + showcase)
+       Google Fonts: Montserrat, Inter, Nunito
+
+     REQUIRED CONTEXT
+       - An ancestor element with data-theme set to one of:
+         evernorth | tcg | chc | white-label
+
+     STATES (per the Primary & Secondary button spec)
+       default / hover / pressed / focus (2px ring) / disabled
+       Inverse set uses the accent tokens (Evernorth mint per
+       spec; other brands derive white-on-brand).
+
+     PLANNED REUSE (next phase, on approval)
+       Form submit, Hero actions, and the Text and Image CTA
+       will consume the .btn atom in place of their local
+       button styles.
+     ============================================================ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="version" content="1.36">
+  <title>Button Group — Component Artifact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="button-group.css">
+</head>
+<body data-theme="evernorth">
+
+<!-- ============================================
+     VARIANT 1 OF 2: button-group--default
+     ============================================ -->
+<div class="component-viewport">
+  <section class="button-group button-group--default">
+    <div class="button-group__panel">
+      <a class="btn btn--primary" href="#">Primary Button</a>
+      <a class="btn btn--secondary" href="#">Secondary Button</a>
+      <a class="btn btn--primary" href="#" aria-disabled="true">Primary Button</a>
+      <a class="btn btn--secondary" href="#" aria-disabled="true">Secondary Button</a>
+    </div>
+    <p class="button-group__note">Hover, press, and tab through the live buttons for the hover / pressed / focus states. The last two show disabled.</p>
+  </section>
+</div>
+
+<!-- ============================================
+     VARIANT 2 OF 2: button-group--inverse
+     ============================================ -->
+<div class="component-viewport">
+  <section class="button-group button-group--inverse">
+    <div class="button-group__panel">
+      <a class="btn btn--primary btn--inverse" href="#">Primary Button</a>
+      <a class="btn btn--secondary btn--inverse" href="#">Secondary Button</a>
+      <a class="btn btn--primary btn--inverse" href="#" aria-disabled="true">Primary Button</a>
+      <a class="btn btn--secondary btn--inverse" href="#" aria-disabled="true">Secondary Button</a>
+    </div>
+    <p class="button-group__note">Inverse set on the brand panel. Hover, press, and tab for states; the last two show disabled.</p>
+  </section>
+</div>
+
+</body>
+</html>

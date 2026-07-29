@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     List Item — Component Artifact (developer deliverable)
+     v1.36
+
+     EVERYTHING INSIDE <body> IS SHIPPABLE MARKUP.
+     Annotations: components/list-item/list-item.md
+     Four self-contained variants; copy the one you need.
+
+     REQUIRED INCLUDES
+       css/tokens.css                           (semantic brand tokens)
+       css/base.css                             (.component-viewport wrapper)
+       components/list-item/list-item.css (this component)
+       components/heading-block/heading-block.css (embedded header)
+       Google Fonts: Montserrat, Inter, Nunito
+       Phosphor Icons web CSS (links variant icons):
+         https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css
+       (CHC mode: Value Serif/Sans Pro licensed webfonts — falls
+        back to Georgia / Helvetica until provided)
+
+     REQUIRED CONTEXT
+       - An ancestor element with data-theme set to one of:
+         evernorth | tcg | chc | white-label
+       - Each section wrapped in .component-viewport (container
+         queries: 1 col <640px, 2x2 640-1023px, 4 across >=1024px)
+
+     VARIANT API (modifier class on <section>)
+       list-item--links | list-item--stats |
+       list-item--articles | list-item--accent
+
+     CONTENT SLOTS
+       .list-item__header — embedded Heading Block (left
+                                justified, no CTA). Uses
+                                heading-block classes; requires
+                                components/heading-block/
+                                heading-block.css.
+       .list-item__item    — repeatable (4 in mockup, 6 in
+                                accent; grid accepts any count)
+       .list-item__icon    — accent only: circular brand badge,
+                                white Phosphor glyph via
+                                currentColor
+         .list-item__icon    — links variant only: 32x32
+                                  inline SVG, brand color via
+                                  currentColor. Phosphor "calendar-heart"
+                                  (regular); swap per lockup.
+         .list-item__stat    — stats variant only (brand)
+         .list-item__icon    — links only: 32x32 Phosphor icon
+                                  (inline Phosphor SVG, brand color;
+                                  placeholder: ph-calendar-dots — swap
+                                  the ph-* class per item)
+         .list-item__heading — links: brand; articles: ink,
+                                  clamped to 2 lines
+         .list-item__body    — short paragraph
+         .list-item__link    — links/articles: label + arrow,
+                                  pinned to column bottom
+     ============================================================ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="version" content="1.36">
+  <title>List Item — Component Artifact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Phosphor Icons (https://phosphoricons.com) — used by the links variant -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../heading-block/heading-block.css">
+  <link rel="stylesheet" href="list-item.css">
+</head>
+<body data-theme="evernorth">
+
+<!-- ============================================
+     VARIANT 1 OF 4: list-item--links
+     ============================================ -->
+<div class="component-viewport">
+  <section class="list-item list-item--links">
+    <div class="heading-block heading-block--left list-item__header">
+      <p class="heading-block__eyebrow">SERVICES</p>
+      <h2 class="heading-block__title">Everything your care starts with</h2>
+      <p class="heading-block__body">Explore the core pieces of the platform—start wherever makes sense for you.</p>
+    </div>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M72,144H32a8,8,0,0,1,0-16H67.72l13.62-20.44a8,8,0,0,1,13.32,0l25.34,38,9.34-14A8,8,0,0,1,136,128h24a8,8,0,0,1,0,16H140.28l-13.62,20.44a8,8,0,0,1-13.32,0L88,126.42l-9.34,14A8,8,0,0,1,72,144ZM178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,.75,0,1.5,0,2.25a8,8,0,1,0,16-.5c0-.58,0-1.17,0-1.75A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46c0,53.61-77.76,102.15-96,112.8-10.83-6.31-42.63-26-66.68-52.21a8,8,0,1,0-11.8,10.82c31.17,34,72.93,56.68,74.69,57.63a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40Z"/></svg>
+        <h3 class="list-item__heading">Integrated care networks</h3>
+        <p class="list-item__body">Access high-performing primary care and specialty providers connected across a single platform, reducing referral delays.</p>
+        <a class="list-item__link" href="#">See covered providers <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"/></svg>
+        <h3 class="list-item__heading">Transparent cost estimates</h3>
+        <p class="list-item__body">See your out-of-pocket costs before you book. No surprise bills, no hidden fees—just clear pricing you can plan around.</p>
+        <a class="list-item__link" href="#">Estimate your cost <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg>
+        <h3 class="list-item__heading">Prescription management</h3>
+        <p class="list-item__body">Fill, refill, and track your medications through home delivery or retail pharmacy—whatever works best for you.</p>
+        <a class="list-item__link" href="#">Manage prescriptions <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <svg class="list-item__icon" viewBox="0 0 256 256" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"/></svg>
+        <h3 class="list-item__heading">24/7 virtual care</h3>
+        <p class="list-item__body">Connect with board-certified clinicians any hour of the day. Urgent care, behavioral health, and chronic condition support—always available.</p>
+        <a class="list-item__link" href="#">Start a virtual visit <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================
+     VARIANT 2 OF 4: list-item--stats
+     ============================================ -->
+<div class="component-viewport">
+  <section class="list-item list-item--stats">
+    <div class="heading-block heading-block--left list-item__header">
+      <p class="heading-block__eyebrow">BY THE NUMBERS</p>
+      <h2 class="heading-block__title">A network that delivers</h2>
+      <p class="heading-block__body">Real numbers from real members, updated every quarter.</p>
+    </div>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <p class="list-item__stat">1.5M+</p>
+        <h3 class="list-item__heading">Integrated care networks</h3>
+        <p class="list-item__body">In-network providers connected across a single coordinated platform.</p>
+      </div>
+      <div class="list-item__item">
+        <p class="list-item__stat">$0</p>
+        <h3 class="list-item__heading">Transparent cost estimates</h3>
+        <p class="list-item__body">Surprise bills when you check your cost estimate before booking.</p>
+      </div>
+      <div class="list-item__item">
+        <p class="list-item__stat">24/7</p>
+        <h3 class="list-item__heading">24/7 virtual care</h3>
+        <p class="list-item__body">Access to board-certified clinicians, any hour, day or night.</p>
+      </div>
+      <div class="list-item__item">
+        <p class="list-item__stat">5 min</p>
+        <h3 class="list-item__heading">Prescription management</h3>
+        <p class="list-item__body">Average time to fill or refill a prescription online.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================
+     VARIANT 3 OF 4: list-item--articles
+     ============================================ -->
+<div class="component-viewport">
+  <section class="list-item list-item--articles">
+    <div class="heading-block heading-block--left list-item__header">
+      <p class="heading-block__eyebrow">HOW IT WORKS</p>
+      <h2 class="heading-block__title">Care, explained</h2>
+      <p class="heading-block__body">A closer look at how each part of the platform works together.</p>
+    </div>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <h3 class="list-item__heading">How integrated care networks cut your wait for a referral</h3>
+        <p class="list-item__body">Every provider and specialist in your plan works through one coordinated system, so care moves faster.</p>
+        <a class="list-item__link" href="#">Read more <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">What transparent pricing looks like before you book</h3>
+        <p class="list-item__body">See your exact out-of-pocket cost estimate before your visit—no surprise bills after the fact.</p>
+        <a class="list-item__link" href="#">Read more <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">Getting your prescriptions delivered, refilled, and tracked</h3>
+        <p class="list-item__body">Home delivery or retail pickup, with automatic refill reminders built in.</p>
+        <a class="list-item__link" href="#">Read more <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+      <div class="list-item__item">
+        <h3 class="list-item__heading">Personalized health programs built around your goals</h3>
+        <p class="list-item__body">Condition management and wellness coaching tailored to your health history, not a generic plan.</p>
+        <a class="list-item__link" href="#">Read more <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================
+     VARIANT 4 OF 4: list-item--accent
+     ============================================ -->
+<div class="component-viewport">
+  <section class="list-item list-item--accent">
+    <div class="heading-block heading-block--left heading-block--no-cta list-item__header">
+      <p class="heading-block__eyebrow">WHY CHOOSE US</p>
+      <h2 class="heading-block__title">Why choose us</h2>
+      <p class="heading-block__body">Six reasons members stick with us after their first visit.</p>
+    </div>
+    <div class="list-item__grid">
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M72,144H32a8,8,0,0,1,0-16H67.72l13.62-20.44a8,8,0,0,1,13.32,0l25.34,38,9.34-14A8,8,0,0,1,136,128h24a8,8,0,0,1,0,16H140.28l-13.62,20.44a8,8,0,0,1-13.32,0L88,126.42l-9.34,14A8,8,0,0,1,72,144ZM178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,.75,0,1.5,0,2.25a8,8,0,1,0,16-.5c0-.58,0-1.17,0-1.75A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46c0,53.61-77.76,102.15-96,112.8-10.83-6.31-42.63-26-66.68-52.21a8,8,0,1,0-11.8,10.82c31.17,34,72.93,56.68,74.69,57.63a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40Z"/></svg></span>
+        <h3 class="list-item__heading">Integrated care networks</h3>
+        <p class="list-item__body">Access high-performing primary care and specialty providers connected across a single platform, reducing referral delays.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"/></svg></span>
+        <h3 class="list-item__heading">Transparent cost estimates</h3>
+        <p class="list-item__body">See your out-of-pocket costs before you book. No surprise bills, no hidden fees—just clear pricing you can plan around.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M216.42,39.6a53.26,53.26,0,0,0-75.32,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31h0L216.43,114.91A53.31,53.31,0,0,0,216.42,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></svg></span>
+        <h3 class="list-item__heading">Prescription management</h3>
+        <p class="list-item__body">Fill, refill, and track your medications through home delivery or retail pharmacy—whatever works best for you.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M251.77,73a8,8,0,0,0-8.21.39L208,97.05V72a16,16,0,0,0-16-16H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V159l35.56,23.71A8,8,0,0,0,248,184a8,8,0,0,0,8-8V80A8,8,0,0,0,251.77,73ZM192,184H32V72H192V184Zm48-22.95-32-21.33V116.28L240,95Z"/></svg></span>
+        <h3 class="list-item__heading">24/7 virtual care</h3>
+        <p class="list-item__body">Connect with board-certified clinicians any hour of the day. Urgent care, behavioral health, and chronic condition support—always available.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M216,64H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24,24,0,0,0,32,56V184a24,24,0,0,0,24,24H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64Zm0,128H56a8,8,0,0,1-8-8V78.63A23.84,23.84,0,0,0,56,80H216Zm-48-60a12,12,0,1,1,12,12A12,12,0,0,1,168,132Z"/></svg></span>
+        <h3 class="list-item__heading">Benefits made simple</h3>
+        <p class="list-item__body">Your full benefits package in one dashboard. Deductibles, coverage details, EOBs, and spending accounts—organized and easy to read.</p>
+      </div>
+      <div class="list-item__item">
+        <span class="list-item__icon" aria-hidden="true"><svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></svg></span>
+        <h3 class="list-item__heading">Personalized health programs</h3>
+        <p class="list-item__body">Condition management, wellness coaching, and preventive care programs tailored to your health history and goals.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
