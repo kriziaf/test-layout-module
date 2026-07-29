@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node (if the npm package from Tier 2 gets scaffolded here later)
+node_modules/
+npm-debug.log*
+
+# Build output (none currently produced, reserved for Tier 1 generator)
+dist/
+build/

@@ -1,6 +1,6 @@
 /* ============================================================
    Button Group Component — button-group.css
-   v1.34 | Token-driven. Defines the .btn atom (Primary /
+   v1.36 | Token-driven. Defines the .btn atom (Primary /
    Secondary, Default / Inverse) plus the .button-group row.
    Requires: tokens.css, base.css, and a data-theme attribute on
    an ancestor: evernorth | tcg | chc | white-label.

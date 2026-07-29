@@ -1,6 +1,6 @@
 ---
 title: Design System — Entry Point
-version: "1.34"
+version: "1.36"
 updated: 2026-07-27
 kind: manifest
 brands: [evernorth, tcg, chc, white-label]
@@ -56,18 +56,20 @@ entire page across four brands.
 | `content-system.md` | Voice, per-component content jobs, canonical copy sets | Writing any user-facing copy |
 | `layout-module.md` | Demo shell + page templates + section rhythm + sync contracts | Template or demo work |
 | `brands.md` | Brand boundary, sanctioned exceptions, per-brand deviations | Adding/changing a brand |
-| `failure-modes.md` | Catalogued traps and their fixes | Before any bulk edit or refactor |
+| `skills/build-component/SKILL.md` | Catalogued build traps and their fixes (pitfalls section) | Before any bulk edit or refactor |
 | `Project-roadmap.md` | Parked work, phases, known gaps | Planning |
 | `ecosystem-flow.md` | Diagram of how all files relate (Mermaid) | Understanding the system's shape before extending it |
 | `executive-summary.md` | One-page leadership summary and resourcing ask | Non-technical stakeholder review |
+| `quick-start.md` | One-page doc-site reference: every artifact and reference file, table format | Fast orientation for a new person, no AI needed |
 | `components/<name>/` | Artifact trio per component | Working on that component |
+| `skills/build-component/SKILL.md` | Step-by-step procedure for building a new component correctly (tokens, artifact trio, Schema Sync Trio, verification) | Anyone/anything about to build or extend a component |
 | `templates/` | Page compositions (all content instances) | Building pages |
 
 ## Task routing
 
 | I want to… | Load | Key constraint |
 |---|---|---|
-| **Build a new component** | `components.json`, `component-library.md`, `failure-modes.md` | Ship the artifact trio; register in demo; verify variant × brand × breakpoint |
+| **Build a new component** | `skills/build-component/SKILL.md` (the procedure), `components.json`, `component-library.md`, `brands.md` | Ship the artifact trio; update the Schema Sync Trio; register in demo; verify variant × brand × breakpoint |
 | **Add a variant to an existing component** | `components.json` (that entry), its artifact trio | Variant = modifier class on the section root; update `components.json` |
 | **Change a component's styling** | `css/tokens.css`, that component's `.css` | Change the token, not the rule, if it's a color/type/radius |
 | **Add or change a brand** | `brands.md` first, then `variables.json`, `css/tokens.css` | Add one `[data-theme]` block; touch no component CSS except the sanctioned Header logo exception |
@@ -75,7 +77,7 @@ entire page across four brands.
 | **Build a page template** | `layout-module.md`, `components.json`, `templates/` | Extract markup from artifacts; rewrite img paths; register in demo |
 | **Write or revise copy** | `content-system.md`, that component's `.md` | Match the component's content job; reshape shared content, don't reinvent |
 | **Wire something into the demo** | `layout-module.md` (demo shell + sync contracts) | Registry entry + `<template>` copies + annotation copy |
-| **Verify a change** | `layout-module.md` (verification pattern), `failure-modes.md` | Measure computed styles and paint, not just geometry |
+| **Verify a change** | `layout-module.md` (verification pattern), `skills/build-component/SKILL.md` (pitfalls section) | Measure computed styles and paint, not just geometry |
 | **Understand why something is the way it is** | `component-library.md` (judgment calls), `Project-roadmap.md` | Distinguish spec'd from inferred before "fixing" it |
 
 ## Quick reference

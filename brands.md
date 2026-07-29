@@ -1,6 +1,6 @@
 ---
 title: Brand Boundary — Reference
-version: "1.34"
+version: "1.36"
 updated: 2026-07-29
 kind: standard
 entry_point: design.md

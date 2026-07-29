@@ -1,7 +1,7 @@
 # Project Roadmap
 
 Running shelf of deferred and planned work for the component
-library. Current release: v1.23.
+library. Current release: v1.35.
 
 ## Phase 2 — Consistency & Polish
 

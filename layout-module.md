@@ -1,6 +1,6 @@
 ---
 title: Layout Module — Demo Shell & Page Templates
-version: "1.34"
+version: "1.36"
 updated: 2026-07-27
 scope: presentation layer — demo shell, page templates, section rhythm
 brands: [evernorth, tcg, chc, white-label]

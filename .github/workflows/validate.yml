@@ -1,0 +1,38 @@
+name: Validate Design Schema
+
+# Runs the Schema Sync Trio + brand-boundary checks on every push
+# and pull request. This is Tier 1 in practice: the check that
+# used to be a manual step at the end of a Claude session is now
+# enforced automatically before anything merges.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate components.json against the codebase
+        run: python scripts/validate.py
+
+      - name: Confirm components.json is valid JSON
+        run: python -c "import json; json.load(open('components.json')); print('components.json: valid JSON')"
+
+      - name: Confirm no hardcoded hex values in brands.md
+        run: |
+          if grep -qE '#[0-9A-Fa-f]{6}' brands.md; then
+            echo "FAIL — brands.md contains a hardcoded hex value. Token values belong in tokens.css only."
+            exit 1
+          fi
+          echo "PASS — brands.md contains no hardcoded values."
