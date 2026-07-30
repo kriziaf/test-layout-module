@@ -77,6 +77,7 @@ entire page across four brands.
 | **Build a page template** | `layout-module.md`, `components.json`, `templates/` | Extract markup from artifacts; rewrite img paths; register in demo |
 | **Write or revise copy** | `content-system.md`, that component's `.md` | Match the component's content job; reshape shared content, don't reinvent |
 | **Wire something into the demo** | `layout-module.md` (demo shell + sync contracts) | Registry entry + `<template>` copies + annotation copy |
+| **Create or plan a new skill** | `import/schema-lite/` (its `design.md`, `SCHEMA.md`, and `skills/build-component/SKILL.md` as the reference pattern) | New skills follow the same self-contained dependency pattern as `build-component`; check `HOW-TO-REUSE.md` for what a portable skill needs to list |
 | **Verify a change** | `layout-module.md` (verification pattern), `skills/build-component/SKILL.md` (pitfalls section) | Measure computed styles and paint, not just geometry |
 | **Understand why something is the way it is** | `component-library.md` (judgment calls), `Project-roadmap.md` | Distinguish spec'd from inferred before "fixing" it |
 
