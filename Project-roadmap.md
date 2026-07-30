@@ -3,6 +3,16 @@
 Running shelf of deferred and planned work for the component
 library. Current release: v1.36.
 
+**Backlog tracking (2026-07-30):** every NEW/parked item below is
+also tracked as a GitHub tracking issue, grouped by work type —
+[#3 Tech Debt & Consistency](https://github.com/kriziaf/test-layout-module/issues/3),
+[#4 Docs & Schema Tooling](https://github.com/kriziaf/test-layout-module/issues/4),
+[#5 New Templates & Features](https://github.com/kriziaf/test-layout-module/issues/5).
+This file stays the source of narrative context (why, dependencies,
+open decisions); the issues carry checkbox tracking state. Each
+tracked bullet below is tagged with its issue. DONE/RESOLVED items
+were not carried over to issues.
+
 ## Phase 2 — Consistency & Polish
 
 - **GitHub sync — RESOLVED (2026-07-29).** The pushed repo
@@ -36,13 +46,13 @@ library. Current release: v1.36.
   1-2 timeline and staffing ask) both shipped. Doc-site quick
   reference is a separate deliverable, not yet started.
 
-- **Accessibility audit (NEW).** The Accessibility Standard is
+- **Accessibility audit (NEW).** → tracked in #3. The Accessibility Standard is
   now written down in `component-library.md` and is enforced by
   construction, but no automated axe/Lighthouse pass and no
   screen-reader testing has been done. Run both and record
   results; the standard currently documents intent, not
   verified conformance.
-- **Design system schema — Tier 1+ (NEW).** `design.md` (entry
+- **Design system schema — Tier 1+ (NEW).** → tracked in #4. `design.md` (entry
   point/router) and `components.json` (machine-readable
   inventory) shipped in v1.31 as Tier 0. Remaining tiers:
   Tier 1 — adopt the `llms.txt` convention and generate the
@@ -53,7 +63,7 @@ library. Current release: v1.36.
   Tier 3 — MCP server / Agent Skill, per the Adobe Spectrum
   Design Data pattern.
 
-- **Documentation ecosystem expansion (NEW, PARKED).** Three
+- **Documentation ecosystem expansion (NEW, PARKED).** → tracked in #4. Three
   procedural how-to guides to complement the existing reference
   docs (do not duplicate — component-library.md and
   layout-module.md already cover the "what exists" side):
@@ -90,7 +100,7 @@ library. Current release: v1.36.
   ("Your title here") — its content is inherited wherever it's
   embedded, so it may not need independent rewriting at all.
 
-- **Grid-system consistency audit (NEW).** Column counts across
+- **Grid-system consistency audit (NEW).** → tracked in #3. Column counts across
   grid-bearing components grew ad hoc rather than deliberately:
   `list-item` (links/stats/articles) runs 4-across at desktop,
   while `horizontal-cards`, `external-link-cards`, and
@@ -102,23 +112,32 @@ library. Current release: v1.36.
   column counts deliberately (or standardize), and document the
   reasoning — rather than leaving it implicit in whichever CSS
   happened to get copied when the component was built.
-- **Template-stack manifest / build script** — one source that
+- **Template-stack manifest / build script** — → tracked in #3. one source that
   generates both `templates/*.html` and the demo TEMPLATES
   object (drift between them has caused three bugs to date).
-- **Section-rhythm generalization** — `templates.css` currently
+- **Section-rhythm generalization** — → tracked in #3. `templates.css` currently
   assumes white surfaces; add surface classes for tinted bands.
-- **List Item naming trap** — `__header` (section) vs
+- **List Item naming trap** — → tracked in #3. `__header` (section) vs
   `__heading` (item) one-letter collision; candidate rename
   `__item-title`.
-- **White Label logo** — Header ships a text placeholder.
-- **CHC licensed webfonts** — Value Serif/Sans Pro @font-face
+- **Rename `layout-module.md`** — → tracked in #3. Proposed
+  `composition-layer.md`, matching the file's own framing
+  ("everything that COMPOSES components without being one");
+  not finalized. Per the sync contracts in `layout-module.md`
+  itself, renames are full renames — filename, `design.md`
+  router entries, cross-references, and frontmatter fields
+  that point at it.
+- **White Label logo** — → tracked in #3. Header ships a text placeholder.
+- **CHC licensed webfonts** — → tracked in #3. Value Serif/Sans Pro @font-face
   drop-in (Georgia/Helvetica fallbacks today).
-- **Non-Evernorth accent buttons** — TCG/CHC/WL inverse sets
+- **Non-Evernorth accent buttons** — → tracked in #3. TCG/CHC/WL inverse sets
   are derived white-on-brand; swap values when specs arrive.
-- **Text and Image cutout** — clip-path version (currently a
+- **Text and Image cutout** — → tracked in #3. clip-path version (currently a
   baked transparent PNG).
 
 ## Phase 2.5 — Re-map Design Data Schema to Claude Design
+
+→ tracked in #4.
 
 Claude Design's onboarding reads a team's codebase/design files
 and builds a design system (colors, typography, components) that
@@ -155,6 +174,8 @@ worth testing directly rather than assuming fit.
 
 ## Phase 3 — Attribute-Based Variant API
 
+→ tracked in #5.
+
 - **`data-variant` + `data-theme` on component roots**,
   replacing BEM modifier classes as the variant/theme API.
   Breaking change; reserved as v2.0. Open naming decision:
@@ -163,6 +184,8 @@ worth testing directly rather than assuming fit.
 
 
 ## Template concepts (virtual-care 3-page set — Homepage shipped as templates/template-homepage.html, v1.23)
+
+→ tracked in #5.
 
 **Page 2 — Services Page (parked, recommended architecture)**
 Goal: let a visitor land on one specific service (e.g. Primary
