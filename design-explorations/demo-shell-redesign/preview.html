@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Shell Style Kit — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shell.css">
+</head>
+<body class="shell">
+<div class="shell-page">
+
+  <p class="shell-eyebrow">Style Kit · Preview</p>
+  <h1 class="shell-title">UI Shell Components</h1>
+
+  <div class="shell-steps">
+    <button type="button" class="shell-steps__item is-done"><span class="shell-steps__num">1</span> Step one</button>
+    <button type="button" class="shell-steps__item is-active"><span class="shell-steps__num">2</span> Step two</button>
+    <button type="button" class="shell-steps__item"><span class="shell-steps__num">3</span> Step three</button>
+  </div>
+
+  <div class="shell-toolbar">
+    <div class="shell-toolbar__group">
+      <span class="shell-toolbar__label">View</span>
+      <button type="button" class="shell-toolbar__pill">Mobile</button>
+      <button type="button" class="shell-toolbar__pill">Tablet</button>
+      <button type="button" class="shell-toolbar__pill is-active">Desktop</button>
+    </div>
+    <div class="shell-toolbar__spacer"></div>
+    <div class="shell-toolbar__group">
+      <span class="shell-toolbar__label">Mode</span>
+      <button type="button" class="shell-toolbar__pill is-active">Light</button>
+      <button type="button" class="shell-toolbar__pill">Dark</button>
+    </div>
+  </div>
+
+  <div class="shell-card">
+    <p class="shell-eyebrow" style="margin-bottom:1rem;">Card container</p>
+    <label style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:0.95rem; display:block; margin-bottom:0.6rem;">A text field</label>
+    <textarea class="shell-textarea" rows="3" placeholder="Placeholder text…" style="margin-bottom:1.5rem;"></textarea>
+    <div style="display:flex; gap:0.75rem; align-items:center;">
+      <button class="shell-btn-primary">Primary action</button>
+      <button class="shell-btn-outline">Secondary</button>
+      <button class="shell-btn-text">&larr; Text button</button>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="shell-card" style="display:flex; align-items:center; justify-content:space-between;">
+    <div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem;">Toggle example</div>
+      <div style="font-size:0.78rem; color:var(--shell-ink-subtle); margin-top:0.2rem;">Describe what this switch controls.</div>
+    </div>
+    <button type="button" class="shell-toggle is-on" id="demo-toggle"></button>
+  </div>
+
+</div>
+
+<div class="shell-sidesheet-overlay" id="demo-overlay"></div>
+<aside class="shell-sidesheet" id="demo-sidesheet" aria-hidden="true">
+  <div class="shell-sidesheet__head">
+    <h2 class="shell-sidesheet__title">Sidesheet example</h2>
+    <button type="button" onclick="document.getElementById('demo-overlay').classList.remove('is-open');document.getElementById('demo-sidesheet').classList.remove('is-open');" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--shell-ink-subtle);">&times;</button>
+  </div>
+  <div class="shell-sidesheet__body">
+    <p style="font-size:0.85rem; color:var(--shell-ink-subtle);">This slides in from the right, same pattern as Draft Room's Export and Content Playbook sidesheets.</p>
+  </div>
+  <div class="shell-sidesheet__foot">
+    <button class="shell-btn-outline" style="flex:1;" onclick="document.getElementById('demo-overlay').classList.remove('is-open');document.getElementById('demo-sidesheet').classList.remove('is-open');">Close</button>
+    <button class="shell-btn-primary" style="flex:1;">Done</button>
+  </div>
+</aside>
+
+<script>
+document.getElementById('demo-toggle').addEventListener('click', function () {
+  this.classList.toggle('is-on');
+});
+// Sidesheet demo trigger — wire any button to this in real use
+document.querySelector('.shell-btn-text').addEventListener('click', function (e) {
+  e.preventDefault();
+  document.getElementById('demo-overlay').classList.add('is-open');
+  document.getElementById('demo-sidesheet').classList.add('is-open');
+});
+document.getElementById('demo-overlay').addEventListener('click', function () {
+  this.classList.remove('is-open');
+  document.getElementById('demo-sidesheet').classList.remove('is-open');
+});
+</script>
+</body>
+</html>
